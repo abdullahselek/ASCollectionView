@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct ASCollectionViewElement {
+public struct ASCollectionViewElement {
     static let Header = "Header"
     static let MoreLoader = "MoreLoader"
 }

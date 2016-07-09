@@ -99,7 +99,7 @@ SOFTWARE.
 
 # Credits
 
-	Inspired from Airbnb and ninjaprox. Improved and all coded in new programming 
+	Inspired by Airbnb and ninjaprox. Improved and all coded in new programming 
 	language Swift.
 
 
