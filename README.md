@@ -3,9 +3,9 @@ A Swift collection view inspired by Airbnb.
 
 # Screenshots
 
-![portrait](https://github.com/abdullahselek/ASToast/blob/master/screenshots/ascollectionview_1.png)
-![portrait_2](https://github.com/abdullahselek/ASToast/blob/master/screenshots/ascollectionview_2.png)
-![landscape](https://github.com/abdullahselek/ASToast/blob/master/screenshots/ascollectionview_3.png)
+![portrait](https://github.com/abdullahselek/ASCollectionView/blob/master/screenshots/ascollectionview_1.png)
+![portrait_2](https://github.com/abdullahselek/ASCollectionView/blob/master/screenshots/ascollectionview_2.png)
+![landscape](https://github.com/abdullahselek/ASCollectionView/blob/master/screenshots/ascollectionview_3.png)
 
 # Requirements
 iOS 8.0+
