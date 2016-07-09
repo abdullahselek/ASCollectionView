@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="TPT-JC-sFe">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ZSi-bg-Rqo">
+            <objects>
+                <viewController id="TPT-JC-sFe" customClass="ViewController" customModule="ASCollectionView" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Zw0-JM-Em0"/>
+                        <viewControllerLayoutGuide type="bottom" id="TeP-GT-PMe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XvX-YR-IiC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LsE-J1-9B1" customClass="ASCollectionView" customModule="ASCollectionView" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewLayout key="collectionViewLayout" id="xji-nx-0fq" customClass="ASCollectionViewLayout" customModule="ASCollectionView" customModuleProvider="target"/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="qB1-dr-RlS" customClass="GridCell" customModule="ASCollectionView" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="11" width="156" height="67"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="156" height="67"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xN9-2y-ron">
+                                                    <rect key="frame" x="0.0" y="0.0" width="156" height="67"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUm-xt-kXU">
+                                                    <rect key="frame" x="8" y="8" width="49" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="xN9-2y-ron" firstAttribute="leading" secondItem="qB1-dr-RlS" secondAttribute="leading" id="F9L-Sh-WRd"/>
+                                            <constraint firstAttribute="trailing" secondItem="xN9-2y-ron" secondAttribute="trailing" id="I86-r7-h2g"/>
+                                            <constraint firstAttribute="bottom" secondItem="xN9-2y-ron" secondAttribute="bottom" id="Kc9-ce-NYh"/>
+                                            <constraint firstItem="xN9-2y-ron" firstAttribute="top" secondItem="qB1-dr-RlS" secondAttribute="top" id="m0P-dd-5eK"/>
+                                            <constraint firstItem="dUm-xt-kXU" firstAttribute="leading" secondItem="qB1-dr-RlS" secondAttribute="leadingMargin" id="meJ-tu-kFm"/>
+                                            <constraint firstItem="dUm-xt-kXU" firstAttribute="top" secondItem="qB1-dr-RlS" secondAttribute="topMargin" id="mpp-hg-Bce"/>
+                                        </constraints>
+                                        <size key="customSize" width="156" height="67"/>
+                                        <connections>
+                                            <outlet property="imageView" destination="xN9-2y-ron" id="eME-Ar-EBQ"/>
+                                            <outlet property="label" destination="dUm-xt-kXU" id="05d-Ud-blf"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="parallaxCell" id="wJ7-fr-heV" customClass="ParallaxCell" customModule="ASCollectionView" customModuleProvider="target">
+                                        <rect key="frame" x="166" y="0.0" width="224" height="89"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="224" height="89"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAB-yp-8vU">
+                                                    <rect key="frame" x="8" y="8" width="72" height="36"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="pAB-yp-8vU" firstAttribute="top" secondItem="wJ7-fr-heV" secondAttribute="topMargin" id="0YF-qh-PcM"/>
+                                            <constraint firstItem="pAB-yp-8vU" firstAttribute="leading" secondItem="wJ7-fr-heV" secondAttribute="leadingMargin" id="Fhc-Oa-Rs1"/>
+                                        </constraints>
+                                        <size key="customSize" width="224" height="89"/>
+                                        <connections>
+                                            <outlet property="label" destination="pAB-yp-8vU" id="Kfb-13-rJL"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LsE-J1-9B1" firstAttribute="top" secondItem="XvX-YR-IiC" secondAttribute="top" id="0ri-CP-CQT"/>
+                            <constraint firstItem="LsE-J1-9B1" firstAttribute="leading" secondItem="XvX-YR-IiC" secondAttribute="leading" id="Y2r-v2-eO7"/>
+                            <constraint firstAttribute="trailing" secondItem="LsE-J1-9B1" secondAttribute="trailing" id="cCv-i8-vH7"/>
+                            <constraint firstItem="LsE-J1-9B1" firstAttribute="bottom" secondItem="TeP-GT-PMe" secondAttribute="top" id="j9C-8P-0lz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="LsE-J1-9B1" id="XaJ-Vi-zZc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t1E-Oj-ZQW" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
