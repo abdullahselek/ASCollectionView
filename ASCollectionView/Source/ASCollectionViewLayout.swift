@@ -9,8 +9,8 @@
 import UIKit
 
 public struct ASCollectionViewElement {
-    static let Header = "Header"
-    static let MoreLoader = "MoreLoader"
+    public static let Header = "Header"
+    public static let MoreLoader = "MoreLoader"
 }
 
 public class ASCollectionViewLayout: UICollectionViewLayout {
