@@ -10,6 +10,26 @@ A Swift collection view inspired by Airbnb.
 # Requirements
 iOS 8.0+
 
+# CocoaPods
+
+CocoaPods is a dependency manager for Cocoa projects. You can install it with the following command:
+	
+	$ gem install cocoapods
+
+To integrate ASCollectionView` into your Xcode project using CocoaPods, specify it in your Podfile:
+
+	source 'https://github.com/CocoaPods/Specs.git'
+	platform :ios, '8.0'
+	use_frameworks!
+
+	target '<Your Target Name>' do
+    	pod 'ASCollectionView', '1.0'
+	end
+
+Then, run the following command:
+
+	$ pod install
+
 # Example Usage
 
 There is a sample viewcontroller inside demo folder and I added some sample code below.
