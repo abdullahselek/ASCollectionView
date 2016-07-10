@@ -82,12 +82,16 @@ viewcontroller and implement custom datasource and delegate methods.
         collectionView.reloadData()
     }
 
+GridCell collectionview cell used in sample
+
     class GridCell: UICollectionViewCell {
     
-    	@IBOutlet var label: UILabel!
-    	@IBOutlet var imageView: UIImageView!
+        @IBOutlet var label: UILabel!
+        @IBOutlet var imageView: UIImageView!
     
-	}
+    }
+
+ParallaxCell used in sample
 
 	class ParallaxCell: ASCollectionViewParallaxCell {
     
