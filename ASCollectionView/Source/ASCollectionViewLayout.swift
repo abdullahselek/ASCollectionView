@@ -82,7 +82,7 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
         self.setDefaultValues()
     }
     
-    override public func prepareLayout() {
+    override public func prepareLayout() {        
         internalGridCellSize = self.gridCellSize
         internalParallaxCellSize = self.parallaxCellSize
         

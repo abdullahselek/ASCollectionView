@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2AAEC0CB8FC02F7CF6507707 /* Pods_ASCollectionView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F81D671A4974CE546B66BE1 /* Pods_ASCollectionView.framework */; };
 		A450CB901C8302D900679DAF /* ASCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A450CB8F1C8302D900679DAF /* ASCollectionView.swift */; };
 		A450CB941C830FE000679DAF /* ASCollectionViewParallaxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A450CB931C830FE000679DAF /* ASCollectionViewParallaxCell.swift */; };
 		A453F7651C8205EE00A799E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A453F7641C8205EE00A799E0 /* AppDelegate.swift */; };
@@ -14,10 +15,12 @@
 		A453F76C1C8205EE00A799E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A453F76B1C8205EE00A799E0 /* Assets.xcassets */; };
 		A453F76F1C8205EE00A799E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A453F76D1C8205EE00A799E0 /* LaunchScreen.storyboard */; };
 		A453F77A1C8205EE00A799E0 /* ASCollectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A453F7791C8205EE00A799E0 /* ASCollectionViewTests.swift */; };
-		A453F7851C8205EE00A799E0 /* ASCollectionViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A453F7841C8205EE00A799E0 /* ASCollectionViewUITests.swift */; };
 		A453F7941C82065F00A799E0 /* ASCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A453F7931C82065F00A799E0 /* ASCollectionViewLayout.swift */; };
 		A47511B71D291B3700AED8CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47511B61D291B3700AED8CE /* ViewController.swift */; };
 		A47511B91D2920E500AED8CE /* Header.xib in Resources */ = {isa = PBXBuildFile; fileRef = A47511B81D2920E500AED8CE /* Header.xib */; };
+		A47531041D4E1D790045D5A3 /* ASCollectionViewLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47531031D4E1D790045D5A3 /* ASCollectionViewLayoutTests.swift */; };
+		A47531061D4E2AE90045D5A3 /* ASCollectionViewParallaxCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47531051D4E2AE90045D5A3 /* ASCollectionViewParallaxCellTests.swift */; };
+		E6C6CB8DC9F13A52E57D5715 /* Pods_ASCollectionViewTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC440ED0A0B14E69AF3C95F8 /* Pods_ASCollectionViewTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,16 +31,13 @@
 			remoteGlobalIDString = A453F7601C8205EE00A799E0;
 			remoteInfo = ASCollectionView;
 		};
-		A453F7811C8205EE00A799E0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A453F7591C8205EE00A799E0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A453F7601C8205EE00A799E0;
-			remoteInfo = ASCollectionView;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		208A05D1797AC4309A83C830 /* Pods-ASCollectionViewTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ASCollectionViewTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ASCollectionViewTests/Pods-ASCollectionViewTests.debug.xcconfig"; sourceTree = "<group>"; };
+		527DAE94F049834E79D61069 /* Pods-ASCollectionViewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ASCollectionViewTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ASCollectionViewTests/Pods-ASCollectionViewTests.release.xcconfig"; sourceTree = "<group>"; };
+		7A153B7653C9253B26575EAB /* Pods-ASCollectionView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ASCollectionView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ASCollectionView/Pods-ASCollectionView.debug.xcconfig"; sourceTree = "<group>"; };
+		9F81D671A4974CE546B66BE1 /* Pods_ASCollectionView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ASCollectionView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A450CB8F1C8302D900679DAF /* ASCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ASCollectionView.swift; path = Source/ASCollectionView.swift; sourceTree = "<group>"; };
 		A450CB931C830FE000679DAF /* ASCollectionViewParallaxCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ASCollectionViewParallaxCell.swift; path = Source/ASCollectionViewParallaxCell.swift; sourceTree = "<group>"; };
 		A453F7611C8205EE00A799E0 /* ASCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ASCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,12 +49,13 @@
 		A453F7751C8205EE00A799E0 /* ASCollectionViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ASCollectionViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A453F7791C8205EE00A799E0 /* ASCollectionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCollectionViewTests.swift; sourceTree = "<group>"; };
 		A453F77B1C8205EE00A799E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A453F7801C8205EE00A799E0 /* ASCollectionViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ASCollectionViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A453F7841C8205EE00A799E0 /* ASCollectionViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCollectionViewUITests.swift; sourceTree = "<group>"; };
-		A453F7861C8205EE00A799E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A453F7931C82065F00A799E0 /* ASCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ASCollectionViewLayout.swift; path = Source/ASCollectionViewLayout.swift; sourceTree = "<group>"; };
 		A47511B61D291B3700AED8CE /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Demo/ViewController.swift; sourceTree = "<group>"; };
 		A47511B81D2920E500AED8CE /* Header.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Header.xib; path = Demo/Header.xib; sourceTree = "<group>"; };
+		A47531031D4E1D790045D5A3 /* ASCollectionViewLayoutTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCollectionViewLayoutTests.swift; sourceTree = "<group>"; };
+		A47531051D4E2AE90045D5A3 /* ASCollectionViewParallaxCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCollectionViewParallaxCellTests.swift; sourceTree = "<group>"; };
+		BB1299B1B59881E6E14D0C05 /* Pods-ASCollectionView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ASCollectionView.release.xcconfig"; path = "Pods/Target Support Files/Pods-ASCollectionView/Pods-ASCollectionView.release.xcconfig"; sourceTree = "<group>"; };
+		DC440ED0A0B14E69AF3C95F8 /* Pods_ASCollectionViewTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ASCollectionViewTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AAEC0CB8FC02F7CF6507707 /* Pods_ASCollectionView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,26 +71,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A453F77D1C8205EE00A799E0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				E6C6CB8DC9F13A52E57D5715 /* Pods_ASCollectionViewTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7EAA79AF74D55B9171535657 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7A153B7653C9253B26575EAB /* Pods-ASCollectionView.debug.xcconfig */,
+				BB1299B1B59881E6E14D0C05 /* Pods-ASCollectionView.release.xcconfig */,
+				208A05D1797AC4309A83C830 /* Pods-ASCollectionViewTests.debug.xcconfig */,
+				527DAE94F049834E79D61069 /* Pods-ASCollectionViewTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A453F7581C8205EE00A799E0 = {
 			isa = PBXGroup;
 			children = (
 				A453F7631C8205EE00A799E0 /* ASCollectionView */,
 				A453F7781C8205EE00A799E0 /* ASCollectionViewTests */,
-				A453F7831C8205EE00A799E0 /* ASCollectionViewUITests */,
 				A453F7621C8205EE00A799E0 /* Products */,
+				7EAA79AF74D55B9171535657 /* Pods */,
+				EB68004BB0326F28BD4958D2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,7 +105,6 @@
 			children = (
 				A453F7611C8205EE00A799E0 /* ASCollectionView.app */,
 				A453F7751C8205EE00A799E0 /* ASCollectionViewTests.xctest */,
-				A453F7801C8205EE00A799E0 /* ASCollectionViewUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -120,18 +127,11 @@
 			isa = PBXGroup;
 			children = (
 				A453F7791C8205EE00A799E0 /* ASCollectionViewTests.swift */,
+				A47531031D4E1D790045D5A3 /* ASCollectionViewLayoutTests.swift */,
+				A47531051D4E2AE90045D5A3 /* ASCollectionViewParallaxCellTests.swift */,
 				A453F77B1C8205EE00A799E0 /* Info.plist */,
 			);
 			path = ASCollectionViewTests;
-			sourceTree = "<group>";
-		};
-		A453F7831C8205EE00A799E0 /* ASCollectionViewUITests */ = {
-			isa = PBXGroup;
-			children = (
-				A453F7841C8205EE00A799E0 /* ASCollectionViewUITests.swift */,
-				A453F7861C8205EE00A799E0 /* Info.plist */,
-			);
-			path = ASCollectionViewUITests;
 			sourceTree = "<group>";
 		};
 		A453F7921C82063200A799E0 /* Source */ = {
@@ -153,6 +153,15 @@
 			name = Demo;
 			sourceTree = "<group>";
 		};
+		EB68004BB0326F28BD4958D2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9F81D671A4974CE546B66BE1 /* Pods_ASCollectionView.framework */,
+				DC440ED0A0B14E69AF3C95F8 /* Pods_ASCollectionViewTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -160,9 +169,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A453F7891C8205EE00A799E0 /* Build configuration list for PBXNativeTarget "ASCollectionView" */;
 			buildPhases = (
+				D21DAEBF4982788846ECD3FE /* [CP] Check Pods Manifest.lock */,
 				A453F75D1C8205EE00A799E0 /* Sources */,
 				A453F75E1C8205EE00A799E0 /* Frameworks */,
 				A453F75F1C8205EE00A799E0 /* Resources */,
+				8D234A66502D2667F1AFC5B7 /* [CP] Embed Pods Frameworks */,
+				CA37BC24B4630F5FC95A94E4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -177,9 +189,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A453F78C1C8205EE00A799E0 /* Build configuration list for PBXNativeTarget "ASCollectionViewTests" */;
 			buildPhases = (
+				D1184CA21AF086A2201092A0 /* [CP] Check Pods Manifest.lock */,
 				A453F7711C8205EE00A799E0 /* Sources */,
 				A453F7721C8205EE00A799E0 /* Frameworks */,
 				A453F7731C8205EE00A799E0 /* Resources */,
+				017E474A34DA9775AF81828A /* [CP] Embed Pods Frameworks */,
+				D26D41D8CA657EF8E51D4DD0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -190,24 +205,6 @@
 			productName = ASCollectionViewTests;
 			productReference = A453F7751C8205EE00A799E0 /* ASCollectionViewTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		A453F77F1C8205EE00A799E0 /* ASCollectionViewUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A453F78F1C8205EE00A799E0 /* Build configuration list for PBXNativeTarget "ASCollectionViewUITests" */;
-			buildPhases = (
-				A453F77C1C8205EE00A799E0 /* Sources */,
-				A453F77D1C8205EE00A799E0 /* Frameworks */,
-				A453F77E1C8205EE00A799E0 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A453F7821C8205EE00A799E0 /* PBXTargetDependency */,
-			);
-			name = ASCollectionViewUITests;
-			productName = ASCollectionViewUITests;
-			productReference = A453F7801C8205EE00A799E0 /* ASCollectionViewUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -223,10 +220,6 @@
 						CreatedOnToolsVersion = 7.2.1;
 					};
 					A453F7741C8205EE00A799E0 = {
-						CreatedOnToolsVersion = 7.2.1;
-						TestTargetID = A453F7601C8205EE00A799E0;
-					};
-					A453F77F1C8205EE00A799E0 = {
 						CreatedOnToolsVersion = 7.2.1;
 						TestTargetID = A453F7601C8205EE00A799E0;
 					};
@@ -247,7 +240,6 @@
 			targets = (
 				A453F7601C8205EE00A799E0 /* ASCollectionView */,
 				A453F7741C8205EE00A799E0 /* ASCollectionViewTests */,
-				A453F77F1C8205EE00A799E0 /* ASCollectionViewUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -271,14 +263,100 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A453F77E1C8205EE00A799E0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		017E474A34DA9775AF81828A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ASCollectionViewTests/Pods-ASCollectionViewTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
-/* End PBXResourcesBuildPhase section */
+		8D234A66502D2667F1AFC5B7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ASCollectionView/Pods-ASCollectionView-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA37BC24B4630F5FC95A94E4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ASCollectionView/Pods-ASCollectionView-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D1184CA21AF086A2201092A0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D21DAEBF4982788846ECD3FE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D26D41D8CA657EF8E51D4DD0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ASCollectionViewTests/Pods-ASCollectionViewTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A453F75D1C8205EE00A799E0 /* Sources */ = {
@@ -297,15 +375,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A47531041D4E1D790045D5A3 /* ASCollectionViewLayoutTests.swift in Sources */,
+				A47531061D4E2AE90045D5A3 /* ASCollectionViewParallaxCellTests.swift in Sources */,
 				A453F77A1C8205EE00A799E0 /* ASCollectionViewTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A453F77C1C8205EE00A799E0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A453F7851C8205EE00A799E0 /* ASCollectionViewUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,11 +388,6 @@
 			isa = PBXTargetDependency;
 			target = A453F7601C8205EE00A799E0 /* ASCollectionView */;
 			targetProxy = A453F7761C8205EE00A799E0 /* PBXContainerItemProxy */;
-		};
-		A453F7821C8205EE00A799E0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A453F7601C8205EE00A799E0 /* ASCollectionView */;
-			targetProxy = A453F7811C8205EE00A799E0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -429,6 +496,7 @@
 		};
 		A453F78A1C8205EE00A799E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A153B7653C9253B26575EAB /* Pods-ASCollectionView.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ASCollectionView/Info.plist;
@@ -441,6 +509,7 @@
 		};
 		A453F78B1C8205EE00A799E0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB1299B1B59881E6E14D0C05 /* Pods-ASCollectionView.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ASCollectionView/Info.plist;
@@ -453,6 +522,7 @@
 		};
 		A453F78D1C8205EE00A799E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 208A05D1797AC4309A83C830 /* Pods-ASCollectionViewTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = ASCollectionViewTests/Info.plist;
@@ -465,6 +535,7 @@
 		};
 		A453F78E1C8205EE00A799E0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 527DAE94F049834E79D61069 /* Pods-ASCollectionViewTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = ASCollectionViewTests/Info.plist;
@@ -472,30 +543,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.abdullahselek.ASCollectionViewTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ASCollectionView.app/ASCollectionView";
-			};
-			name = Release;
-		};
-		A453F7901C8205EE00A799E0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = ASCollectionViewUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.abdullahselek.ASCollectionViewUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = ASCollectionView;
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
-		A453F7911C8205EE00A799E0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = ASCollectionViewUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.abdullahselek.ASCollectionViewUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = ASCollectionView;
-				USES_XCTRUNNER = YES;
 			};
 			name = Release;
 		};
@@ -525,15 +572,6 @@
 			buildConfigurations = (
 				A453F78D1C8205EE00A799E0 /* Debug */,
 				A453F78E1C8205EE00A799E0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A453F78F1C8205EE00A799E0 /* Build configuration list for PBXNativeTarget "ASCollectionViewUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A453F7901C8205EE00A799E0 /* Debug */,
-				A453F7911C8205EE00A799E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
