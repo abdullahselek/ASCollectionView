@@ -2,7 +2,7 @@ language: objective-c
 osx_image: xcode7.3
 xcode_project: ASCollectionView.xcworkspace
 xcode_scheme: ASCollectionViewTests
-xcode_sdk: iphonesimulator9.0
+xcode_sdk: iphonesimulator9.3
 
 branches:
  only:
@@ -15,6 +15,6 @@ before_install:
 install: bundle
 
 script:
-- xcodebuild -workspace ASCollectionView.xcworkspace -scheme ASCollectionView -destination "platform=iOS Simulator,name=iPhone 6,OS=9.0" clean test | xcpretty
+- xcodebuild -workspace ASCollectionView.xcworkspace -scheme ASCollectionView -destination "platform=iOS Simulator,name=iPhone 6,OS=9.3" clean test | xcpretty
 
 after_success: slather
