@@ -8,5 +8,13 @@ branches:
  only:
  - master
 
+before_install:
+- rm -rf /Users/travis/Library/Developer/Xcode/DerivedData/ASCollectionView-*/
+- rvm use $RVM_RUBY_VERSION
+
+install: bundle
+
 script:
-- xcodebuild -workspace ASCollectionView.xcworkspace -scheme ASCollectionView -destination "platform=iOS Simulator,name=iPhone 6,OS=9.0" clean test
+- xcodebuild -workspace ASCollectionView.xcworkspace -scheme ASCollectionView -destination "platform=iOS Simulator,name=iPhone 6,OS=9.0" clean test | xcpretty
+
+after_success: slather
