@@ -1,5 +1,6 @@
 ![Build Status](https://travis-ci.org/abdullahselek/ASCollectionView.svg?branch=master)
 ![CocoaPods Compatible](https://img.shields.io/cocoapods/v/ASCollectionView.svg)
+[![Coverage Status](https://coveralls.io/repos/github/abdullahselek/ASCollectionView/badge.svg?branch=master)](https://coveralls.io/github/abdullahselek/ASCollectionView?branch=master)
 
 # ASCollectionView
 A Swift collection view inspired by Airbnb.
