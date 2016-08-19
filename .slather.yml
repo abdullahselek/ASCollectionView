@@ -1,0 +1,9 @@
+ci_service: travis_ci
+coverage_service: coveralls
+workspace: ASCollectionView.xcodeworkspace
+xcodeproj: ASCollectionView.xcodeproj
+scheme: ASCollectionView
+source_directory: ASCollectionView/Source
+ignore:
+  - ASCollectionView/AppDelegate.swift
+  - ASCollectionView/Demo/ViewController.swift
