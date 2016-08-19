@@ -16,7 +16,7 @@ class ASCollectionViewParallaxCellTests: QuickSpec {
     override func spec() {
         describe("CollectionView Parallax Cell") {
             context("Check init") {
-                it("if sucess") {
+                it("if success") {
                     let parallaxCell = ASCollectionViewParallaxCell()
                     expect(parallaxCell).notTo(beNil())
                 }
