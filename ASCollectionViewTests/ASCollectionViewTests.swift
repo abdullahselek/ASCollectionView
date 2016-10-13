@@ -110,19 +110,19 @@ class ASCollectionViewTests: QuickSpec {
     }
     
     class MockDataSource: NSObject, ASCollectionViewDataSource {
-        func numberOfItemsInASCollectionView(asCollectionView: ASCollectionView) -> Int {
+        func numberOfItemsInASCollectionView(_ asCollectionView: ASCollectionView) -> Int {
             return 10
         }
-        func collectionView(asCollectionView: ASCollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        func collectionView(_ asCollectionView: ASCollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
             return ASCollectionViewParallaxCell(frame: CGRectMake(5.0, 5.0, 310.0, 50.0))
         }
-        func collectionView(asCollectionView: ASCollectionView, parallaxCellForItemAtIndexPath indexPath: NSIndexPath) -> ASCollectionViewParallaxCell {
+        func collectionView(_ asCollectionView: ASCollectionView, parallaxCellForItemAtIndexPath indexPath: NSIndexPath) -> ASCollectionViewParallaxCell {
             return ASCollectionViewParallaxCell(frame: CGRectMake(5.0, 5.0, 310.0, 50.0))
         }
-        func moreLoaderInASCollectionView(asCollectionView: ASCollectionView) -> UIView {
+        func moreLoaderInASCollectionView(_ asCollectionView: ASCollectionView) -> UIView {
             return UIView()
         }
-        func collectionView(asCollectionView: ASCollectionView, headerAtIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        func collectionView(_ asCollectionView: ASCollectionView, headerAtIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
             return UICollectionReusableView()
         }
     }

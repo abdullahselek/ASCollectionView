@@ -18,7 +18,7 @@ class ViewController: UIViewController, ASCollectionViewDataSource, ASCollection
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.registerNib(UINib(nibName: collectionElementKindHeader, bundle: nil), forSupplementaryViewOfKind: collectionElementKindHeader, withReuseIdentifier: "header")
+        collectionView.register(UINib(nibName: collectionElementKindHeader, bundle: nil), forSupplementaryViewOfKind: collectionElementKindHeader, withReuseIdentifier: "header")
         collectionView.delegate = self
         collectionView.asDataSource = self
     }
@@ -30,30 +30,30 @@ class ViewController: UIViewController, ASCollectionViewDataSource, ASCollection
 
     // MARK: ASCollectionViewDataSource
     
-    func numberOfItemsInASCollectionView(asCollectionView: ASCollectionView) -> Int {
+    func numberOfItemsInASCollectionView(_ asCollectionView: ASCollectionView) -> Int {
         return numberOfItems
     }
     
-    func collectionView(asCollectionView: ASCollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let gridCell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! GridCell
-        gridCell.label.text = NSString(format: "Item %ld ", indexPath.row) as String
-        gridCell.imageView.image = UIImage(named: NSString(format: "image-%ld", indexPath.row % 10) as String)
+    func collectionView(_ asCollectionView: ASCollectionView, cellForItemAtIndexPath indexPath: IndexPath) -> UICollectionViewCell {
+        let gridCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! GridCell
+        gridCell.label.text = NSString(format: "Item %ld ", (indexPath as NSIndexPath).row) as String
+        gridCell.imageView.image = UIImage(named: NSString(format: "image-%ld", (indexPath as NSIndexPath).row % 10) as String)
         return gridCell
     }
     
-    func collectionView(asCollectionView: ASCollectionView, parallaxCellForItemAtIndexPath indexPath: NSIndexPath) -> ASCollectionViewParallaxCell {
-        let parallaxCell = collectionView.dequeueReusableCellWithReuseIdentifier("parallaxCell", forIndexPath: indexPath) as! ParallaxCell
-        parallaxCell.label.text = NSString(format: "Item %ld ", indexPath.row) as String
-        parallaxCell.updateParallaxImage(UIImage(named: NSString(format: "image-%ld", indexPath.row % 10) as String)!)
+    func collectionView(_ asCollectionView: ASCollectionView, parallaxCellForItemAtIndexPath indexPath: IndexPath) -> ASCollectionViewParallaxCell {
+        let parallaxCell = collectionView.dequeueReusableCell(withReuseIdentifier: "parallaxCell", for: indexPath) as! ParallaxCell
+        parallaxCell.label.text = NSString(format: "Item %ld ", (indexPath as NSIndexPath).row) as String
+        parallaxCell.updateParallaxImage(UIImage(named: NSString(format: "image-%ld", (indexPath as NSIndexPath).row % 10) as String)!)
         return parallaxCell
     }
     
-    func collectionView(asCollectionView: ASCollectionView, headerAtIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryViewOfKind(ASCollectionViewElement.Header, withReuseIdentifier: "header", forIndexPath: indexPath)
+    func collectionView(_ asCollectionView: ASCollectionView, headerAtIndexPath indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: ASCollectionViewElement.Header, withReuseIdentifier: "header", for: indexPath)
         return header
     }
     
-    func loadMoreInASCollectionView(asCollectionView: ASCollectionView) {
+    func loadMoreInASCollectionView(_ asCollectionView: ASCollectionView) {
         if numberOfItems > 30 {
             collectionView.enableLoadMore = false
             return

@@ -83,7 +83,7 @@ class ASCollectionViewLayoutTests: QuickSpec {
             return CGSizeMake(200, 200)
         }
         
-        override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        override func layoutAttributesForElementsInRect(_ rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
             var result = [UICollectionViewLayoutAttributes]()
             for itemCount in 0 ..< 2 {
                 let indexPath = NSIndexPath(forItem: itemCount, inSection: SECTION)
@@ -102,17 +102,17 @@ class ASCollectionViewLayoutTests: QuickSpec {
             return result
         }
         
-        override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+        override func layoutAttributesForItemAtIndexPath(_ indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
             return cellAttributes.objectForKey(indexPath) as? UICollectionViewLayoutAttributes
         }
         
-        override func layoutAttributesForSupplementaryViewOfKind(elementKind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+        override func layoutAttributesForSupplementaryViewOfKind(_ elementKind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
             headerAttributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: ASCollectionViewElement.Header, withIndexPath: NSIndexPath(forRow: 0, inSection: SECTION))
             headerAttributes.frame = CGRectMake(0, 0, 320, self.headerSize.height);
             return headerAttributes
         }
         
-        override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
+        override func shouldInvalidateLayoutForBoundsChange(_ newBounds: CGRect) -> Bool {
             return true
         }
     }

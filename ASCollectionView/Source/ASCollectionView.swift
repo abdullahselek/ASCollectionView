@@ -19,7 +19,7 @@ public protocol ASCollectionViewDataSource : NSObjectProtocol {
   *
   *  @return Number of items in collection view.
  */
-func numberOfItemsInASCollectionView(asCollectionView: ASCollectionView) -> Int
+func numberOfItemsInASCollectionView(_ asCollectionView: ASCollectionView) -> Int
 
 /**
   *  Return grid cell for collection view at specified index path.
@@ -29,7 +29,7 @@ func numberOfItemsInASCollectionView(asCollectionView: ASCollectionView) -> Int
   *
   *  @return Grid cell at index path.
  */
-func collectionView(asCollectionView: ASCollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
+func collectionView(_ asCollectionView: ASCollectionView, cellForItemAtIndexPath indexPath: IndexPath) -> UICollectionViewCell
 
 /**
   *  Return parallax cell for collection view at specified index path.
@@ -39,7 +39,7 @@ func collectionView(asCollectionView: ASCollectionView, cellForItemAtIndexPath i
   *
   *  @return Parallax cell at index path.
  */
-func collectionView(asCollectionView: ASCollectionView, parallaxCellForItemAtIndexPath indexPath: NSIndexPath) -> ASCollectionViewParallaxCell
+func collectionView(_ asCollectionView: ASCollectionView, parallaxCellForItemAtIndexPath indexPath: IndexPath) -> ASCollectionViewParallaxCell
     
 /**
   *  Return header of collection view. Header must be subclass of `UICollectionReusableView`.
@@ -49,7 +49,7 @@ func collectionView(asCollectionView: ASCollectionView, parallaxCellForItemAtInd
   *
   *  @return Header of collection view.
  */
-optional func collectionView(asCollectionView: ASCollectionView, headerAtIndexPath indexPath: NSIndexPath) -> UICollectionReusableView
+@objc optional func collectionView(_ asCollectionView: ASCollectionView, headerAtIndexPath indexPath: IndexPath) -> UICollectionReusableView
 
 /**
   *  Return more loader view of collection view. This view will be added into the section at bottom of collection view.
@@ -58,7 +58,7 @@ optional func collectionView(asCollectionView: ASCollectionView, headerAtIndexPa
   *
   *  @return More loader view of collection view.
  */
-optional func moreLoaderInASCollectionView(asCollectionView: ASCollectionView) -> UIView
+@objc optional func moreLoaderInASCollectionView(_ asCollectionView: ASCollectionView) -> UIView
     
 }
 
@@ -70,11 +70,11 @@ public protocol ASCollectionViewDelegate: UICollectionViewDelegate {
   *
   *  @param collectionView The collection view using this delegate.
 */
-optional func loadMoreInASCollectionView(asCollectionView: ASCollectionView)
+@objc optional func loadMoreInASCollectionView(_ asCollectionView: ASCollectionView)
 
 }
 
-public class ASCollectionView: UICollectionView, UICollectionViewDataSource {
+open class ASCollectionView: UICollectionView, UICollectionViewDataSource {
     
     let kMoreLoaderIdentifier = "moreLoader"
     let kContentOffset = "contentOffset"
@@ -82,20 +82,20 @@ public class ASCollectionView: UICollectionView, UICollectionViewDataSource {
     /**
       *  Indicate the collection view is waiting for loading more data.
      */
-    public var loadingMore: Bool!
+    open var loadingMore: Bool!
     
     /**
       *  Indicate if the collection view has load more ability.
      */
-    public var enableLoadMore: Bool!
+    open var enableLoadMore: Bool!
     
     /**
       * Custom data source
      */
-    public var asDataSource: ASCollectionViewDataSource?
+    open var asDataSource: ASCollectionViewDataSource?
     
-    private var displayLink: CADisplayLink!
-    private var currentOrientation: UIInterfaceOrientation!
+    fileprivate var displayLink: CADisplayLink!
+    fileprivate var currentOrientation: UIInterfaceOrientation!
     
     // MARK: LifeCycle
     
@@ -111,28 +111,28 @@ public class ASCollectionView: UICollectionView, UICollectionViewDataSource {
         self.setUpParallax()
     }
     
-    private func setUp() {
+    fileprivate func setUp() {
         dataSource = self        
         enableLoadMore = true
         loadingMore = false
-        currentOrientation = UIInterfaceOrientation.Portrait
+        currentOrientation = UIInterfaceOrientation.portrait
         (self.collectionViewLayout as? ASCollectionViewLayout)?.currentOrientation = currentOrientation
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ASCollectionView.orientationChanged(_:)), name: UIDeviceOrientationDidChangeNotification, object: nil)
-        registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: ASCollectionViewElement.MoreLoader, withReuseIdentifier: kMoreLoaderIdentifier)
-        addObserver(self, forKeyPath: kContentOffset, options: NSKeyValueObservingOptions.New, context: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ASCollectionView.orientationChanged(_:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        register(UICollectionReusableView.self, forSupplementaryViewOfKind: ASCollectionViewElement.MoreLoader, withReuseIdentifier: kMoreLoaderIdentifier)
+        addObserver(self, forKeyPath: kContentOffset, options: NSKeyValueObservingOptions.new, context: nil)
     }
     
-    private func setUpParallax() {
+    fileprivate func setUpParallax() {
         weak var weakSelf = self
         displayLink = CADisplayLink(target: weakSelf!, selector: #selector(ASCollectionView.doParallax(_:)))
         displayLink.frameInterval = 1
-        displayLink.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSRunLoopCommonModes)
+        displayLink.add(to: RunLoop.current, forMode: RunLoopMode.commonModes)
     }
     
     // MARK: Key-Value Observer
     
-    override public func didChangeValueForKey(key: String) {
-        if key == kContentOffset && CGPointEqualToPoint(self.contentOffset, CGPointZero) {
+    override open func didChangeValue(forKey key: String) {
+        if key == kContentOffset && self.contentOffset.equalTo(CGPoint.zero) {
             if ((UIInterfaceOrientationIsPortrait(currentOrientation) && contentOffset.y > (contentSize.height - frame.size.height)) ||
                 (UIInterfaceOrientationIsLandscape(currentOrientation) && contentOffset.x > (contentSize.width - self.frame.size.width))) {
                     if enableLoadMore == true && !loadingMore {
@@ -142,29 +142,29 @@ public class ASCollectionView: UICollectionView, UICollectionViewDataSource {
         }
     }
     
-    public func setEnableLoadMore(enableLoadMore: Bool) {
+    open func setEnableLoadMore(_ enableLoadMore: Bool) {
         self.enableLoadMore = enableLoadMore
         self.collectionViewLayout.invalidateLayout()
     }
     
     // MARK: UICollectionViewDataSource
     
-    public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    open func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1;
     }
     
-    public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
+    open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         if asDataSource != nil {
             return asDataSource!.numberOfItemsInASCollectionView(self)
         }
         return 0
     }
     
-    public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        if indexPath.row % 10 % 3 == 0 && indexPath.row % 10 / 3 % 2 == 1 {
+    open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if (indexPath as NSIndexPath).row % 10 % 3 == 0 && (indexPath as NSIndexPath).row % 10 / 3 % 2 == 1 {
             let collectionViewCell: ASCollectionViewParallaxCell
             
-            if !collectionView.collectionViewLayout.isKindOfClass(ASCollectionViewLayout) {
+            if !collectionView.collectionViewLayout.isKind(of: ASCollectionViewLayout.self) {
                 assertionFailure("CollectionView layout should be extended ASCollectionViewLauout")
             }
             
@@ -180,7 +180,7 @@ public class ASCollectionView: UICollectionView, UICollectionViewDataSource {
         return asDataSource!.collectionView(self, cellForItemAtIndexPath: indexPath)
     }
 
-    public func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    open func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         var reusableView : UICollectionReusableView? = nil
         if kind == ASCollectionViewElement.Header {
             if let header = asDataSource?.collectionView?(self, headerAtIndexPath: indexPath) {
@@ -188,22 +188,22 @@ public class ASCollectionView: UICollectionView, UICollectionViewDataSource {
                 return reusableView!
             }
         } else if kind == ASCollectionViewElement.MoreLoader {
-            let reusableView = self.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: kMoreLoaderIdentifier, forIndexPath: indexPath)
+            let reusableView = self.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: kMoreLoaderIdentifier, for: indexPath)
             var moreLoaderView = reusableView.viewWithTag(1)
             if moreLoaderView == nil {
                 if let view = asDataSource?.moreLoaderInASCollectionView?(self) {
                     moreLoaderView = view
                 }
                 if moreLoaderView == nil {
-                    moreLoaderView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+                    moreLoaderView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
                     (moreLoaderView as! UIActivityIndicatorView).startAnimating()
                 }
-                moreLoaderView!.center = CGPointMake(reusableView.bounds.size.width / 2, reusableView.bounds.size.height / 2)
+                moreLoaderView!.center = CGPoint(x: reusableView.bounds.size.width / 2, y: reusableView.bounds.size.height / 2)
                 moreLoaderView!.tag = 1
                 reusableView.addSubview(moreLoaderView!)
                 moreLoaderView?.translatesAutoresizingMaskIntoConstraints = false
-                reusableView.addConstraint(NSLayoutConstraint(item: moreLoaderView!, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: reusableView, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0))
-                reusableView.addConstraint(NSLayoutConstraint(item: moreLoaderView!, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: reusableView, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0))
+                reusableView.addConstraint(NSLayoutConstraint(item: moreLoaderView!, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: reusableView, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0))
+                reusableView.addConstraint(NSLayoutConstraint(item: moreLoaderView!, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: reusableView, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0))
             }
             return reusableView
         } else {
@@ -214,25 +214,25 @@ public class ASCollectionView: UICollectionView, UICollectionViewDataSource {
     
     // MARK: Parallax Effects
     
-    func doParallax(displayLink: CADisplayLink) {
-        let visibleCells = self.visibleCells()
+    func doParallax(_ displayLink: CADisplayLink) {
+        let visibleCells = self.visibleCells
         for cell in visibleCells {
-            if cell.isKindOfClass(ASCollectionViewParallaxCell) {
+            if cell.isKind(of: ASCollectionViewParallaxCell.self) {
                 let parallaxCell = cell as! ASCollectionViewParallaxCell
                 
                 let bounds = self.bounds
-                let boundsCenter = CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds))
+                let boundsCenter = CGPoint(x: bounds.midX, y: bounds.midY)
                 let cellCenter = parallaxCell.center
-                let offsetFromCenter = CGPointMake(boundsCenter.x - cellCenter.x, boundsCenter.y - cellCenter.y)
+                let offsetFromCenter = CGPoint(x: boundsCenter.x - cellCenter.x, y: boundsCenter.y - cellCenter.y)
                 let cellSize = parallaxCell.bounds.size
                 let maxVerticalOffset = (bounds.size.height / 2) + (cellSize.height / 2)
                 let scaleFactor = parallaxCell.maxParallaxOffset / maxVerticalOffset
                 let parallaxOffset: CGPoint
                 
                 if UIInterfaceOrientationIsPortrait(currentOrientation) {
-                    parallaxOffset = CGPointMake(0, -offsetFromCenter.y * scaleFactor)
+                    parallaxOffset = CGPoint(x: 0, y: -offsetFromCenter.y * scaleFactor)
                 } else {
-                    parallaxOffset = CGPointMake(-offsetFromCenter.x * scaleFactor, 0)
+                    parallaxOffset = CGPoint(x: -offsetFromCenter.x * scaleFactor, y: 0)
                 }
                 parallaxCell.setParallaxImageOffset(parallaxOffset)
             }
@@ -241,16 +241,16 @@ public class ASCollectionView: UICollectionView, UICollectionViewDataSource {
     
     // MARK: Orientation
     
-    func orientationChanged(notification: NSNotification) {
-        currentOrientation = UIApplication.sharedApplication().statusBarOrientation
+    func orientationChanged(_ notification: Notification) {
+        currentOrientation = UIApplication.shared.statusBarOrientation
         (self.collectionViewLayout as! ASCollectionViewLayout).currentOrientation = currentOrientation
         self.collectionViewLayout.invalidateLayout()
     }
     
     // MARK: Load More
     
-    private func loadMore() {
-        if self.delegate!.conformsToProtocol(ASCollectionViewDelegate) {
+    fileprivate func loadMore() {
+        if self.delegate!.conforms(to: ASCollectionViewDelegate.self) {
             loadingMore = true
             (self.delegate as! ASCollectionViewDelegate).loadMoreInASCollectionView!(self)
         }
@@ -260,7 +260,7 @@ public class ASCollectionView: UICollectionView, UICollectionViewDataSource {
     
     deinit {
         displayLink.invalidate()
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
         removeObserver(self, forKeyPath: kContentOffset)
     }
 

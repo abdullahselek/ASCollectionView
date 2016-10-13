@@ -13,7 +13,7 @@ public struct ASCollectionViewElement {
     public static let MoreLoader = "MoreLoader"
 }
 
-public class ASCollectionViewLayout: UICollectionViewLayout {
+open class ASCollectionViewLayout: UICollectionViewLayout {
     
     let SECTION = 0
     let NUMBEROFITEMSINGROUP = 10
@@ -21,56 +21,56 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
     /**
       *  Grid cell size. Default value is (200, 100).
      */
-    public var gridCellSize: CGSize!
+    open var gridCellSize: CGSize!
     
     /**
       *  Parallax cell size. Default value is (400, 200).
      */
-    public var parallaxCellSize: CGSize!
+    open var parallaxCellSize: CGSize!
     
     /**
       *  Header size. Default value is (200, 200).
       *
       *  Set (0, 0) for no header
      */
-    public var headerSize: CGSize!
+    open var headerSize: CGSize!
     
     /**
       *  Size for more loader section. Default value is (50, 50).
      */
-    public var moreLoaderSize: CGSize!
+    open var moreLoaderSize: CGSize!
     
     /**
       *  Space between grid cells. Default value is (10, 10).
      */
-    public var gridCellSpacing: CGSize!
+    open var gridCellSpacing: CGSize!
     
     /**
       *  Padding for grid. Default value is 20.
      */
-    public var gridPadding: CGFloat! = 20.0
+    open var gridPadding: CGFloat! = 20.0
     
     /**
       *  Maximum parallax offset. Default value is 50.
      */
-    public var maxParallaxOffset: CGFloat! = 50.0
+    open var maxParallaxOffset: CGFloat! = 50.0
     
     /**
       *  Current orientation, used to layout correctly corresponding to orientation.
      */
-    public var currentOrientation: UIInterfaceOrientation!
+    open var currentOrientation: UIInterfaceOrientation!
     
     /**
       * Internal variables
      */
-    private var contentSize: CGSize!
-    private var groupSize: CGSize!
-    private var internalGridCellSize: CGSize!
-    private var internalParallaxCellSize: CGSize!
-    private var previousBoundsSize: CGSize!
-    private var cellAttributes: NSMutableDictionary!
-    private var headerAttributes: UICollectionViewLayoutAttributes!
-    private var moreLoaderAttributes: UICollectionViewLayoutAttributes!
+    fileprivate var contentSize: CGSize!
+    fileprivate var groupSize: CGSize!
+    fileprivate var internalGridCellSize: CGSize!
+    fileprivate var internalParallaxCellSize: CGSize!
+    fileprivate var previousBoundsSize: CGSize!
+    fileprivate var cellAttributes: NSMutableDictionary!
+    fileprivate var headerAttributes: UICollectionViewLayoutAttributes!
+    fileprivate var moreLoaderAttributes: UICollectionViewLayoutAttributes!
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -82,7 +82,7 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
         self.setDefaultValues()
     }
     
-    override public func prepareLayout() {        
+    override open func prepare() {        
         internalGridCellSize = self.gridCellSize
         internalParallaxCellSize = self.parallaxCellSize
         
@@ -98,46 +98,46 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
         calculateMoreLoaderAttributes()
     }
     
-    override public func collectionViewContentSize() -> CGSize {
+    override open var collectionViewContentSize : CGSize {
         return contentSize
     }
     
-    override public func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var result = [UICollectionViewLayoutAttributes]()
-        let numberOfItems = self.collectionView!.numberOfItemsInSection(0)
+        let numberOfItems = self.collectionView!.numberOfItems(inSection: 0)
         
         for itemCount in 0 ..< numberOfItems {
-            let indexPath = NSIndexPath(forItem: itemCount, inSection: SECTION)
-            let attributes = cellAttributes.objectForKey(indexPath) as! UICollectionViewLayoutAttributes
+            let indexPath = IndexPath(item: itemCount, section: SECTION)
+            let attributes = cellAttributes.object(forKey: indexPath) as! UICollectionViewLayoutAttributes
             
-            if CGRectIntersectsRect(rect, attributes.frame) {
+            if rect.intersects(attributes.frame) {
                 result.append(attributes)
             }
         }
         
         // now add header attributes if it is in rect
-        if headerAttributes != nil && CGRectIntersectsRect(rect, headerAttributes.frame) == true {
+        if headerAttributes != nil && rect.intersects(headerAttributes.frame) == true {
             result.append(headerAttributes)
         }
         
         // add more loader attributes if it is in rect
-        if moreLoaderAttributes != nil && CGRectIntersectsRect(rect, moreLoaderAttributes.frame) == true {
+        if moreLoaderAttributes != nil && rect.intersects(moreLoaderAttributes.frame) == true {
             result.append(moreLoaderAttributes)
         }
         
         return result
     }
     
-    override public func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
-        return cellAttributes.objectForKey(indexPath) as? UICollectionViewLayoutAttributes
+    override open func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        return cellAttributes.object(forKey: indexPath) as? UICollectionViewLayoutAttributes
     }
     
-    override public func layoutAttributesForSupplementaryViewOfKind(elementKind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+    override open func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return headerAttributes
     }
     
-    override public func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
-        if CGSizeEqualToSize(previousBoundsSize, newBounds.size) {
+    override open func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        if previousBoundsSize.equalTo(newBounds.size) {
             previousBoundsSize = newBounds.size
             return true
         }
@@ -146,12 +146,12 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
     
     // MARK: Calculation methods
     
-    private func calculateContentSize() {
+    fileprivate func calculateContentSize() {
         if self.collectionView == nil {
             return
         }
         
-        let numberOfItems = self.collectionView!.numberOfItemsInSection(SECTION)
+        let numberOfItems = self.collectionView!.numberOfItems(inSection: SECTION)
         groupSize = CGSize()
         contentSize = CGSize()
         if UIInterfaceOrientationIsPortrait(currentOrientation) {
@@ -215,7 +215,7 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
         }
     }
     
-    private func calculateCellSize() {
+    fileprivate func calculateCellSize() {
         if self.collectionView == nil {
             return
         }
@@ -229,18 +229,18 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
         }
     }
     
-    private func calculateCellAttributes() {
+    fileprivate func calculateCellAttributes() {
         if self.collectionView == nil {
             return
         }
         
-        let numberOfItems = self.collectionView!.numberOfItemsInSection(SECTION)
+        let numberOfItems = self.collectionView!.numberOfItems(inSection: SECTION)
         
         cellAttributes = NSMutableDictionary(capacity: numberOfItems)
         for itemCount in 0 ..< numberOfItems {
-            let indexPath = NSIndexPath(forItem: itemCount, inSection: SECTION)
-            let attributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
-            cellAttributes.setObject(attributes, forKey: indexPath)
+            let indexPath = IndexPath(item: itemCount, section: SECTION)
+            let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+            cellAttributes.setObject(attributes, forKey: indexPath as NSCopying)
         }
         
         var x: CGFloat = self.gridPadding
@@ -255,47 +255,47 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
         
         for itemCount in 0 ..< numberOfItems {
             let indexInGroup = itemCount % NUMBEROFITEMSINGROUP
-            let indexPath = NSIndexPath(forItem: itemCount, inSection: SECTION)
-            let attributes = cellAttributes.objectForKey(indexPath) as! UICollectionViewLayoutAttributes
-            var frame = CGRectZero
+            let indexPath = IndexPath(item: itemCount, section: SECTION)
+            let attributes = cellAttributes.object(forKey: indexPath) as! UICollectionViewLayoutAttributes
+            var frame = CGRect.zero
             
             if UIInterfaceOrientationIsPortrait(self.currentOrientation) {
                 switch (indexInGroup) {
                 case 0:
-                    frame = CGRectMake(x, y, internalGridCellSize.width, internalGridCellSize.height)
+                    frame = CGRect(x: x, y: y, width: internalGridCellSize.width, height: internalGridCellSize.height)
                     break
                 case 1:
-                    frame = CGRectMake(x + internalGridCellSize.width + self.gridCellSpacing.width, y, internalGridCellSize.width, internalGridCellSize.height * 2 + self.gridCellSpacing.height)
+                    frame = CGRect(x: x + internalGridCellSize.width + self.gridCellSpacing.width, y: y, width: internalGridCellSize.width, height: internalGridCellSize.height * 2 + self.gridCellSpacing.height)
                     y += frame.size.height + self.gridPadding
                     break
                 case 2:
-                    frame = CGRectMake(x, y - internalGridCellSize.height - self.gridPadding, internalGridCellSize.width, internalGridCellSize.height)
+                    frame = CGRect(x: x, y: y - internalGridCellSize.height - self.gridPadding, width: internalGridCellSize.width, height: internalGridCellSize.height)
                     
                     break
                 case 3:
-                    frame = CGRectMake(0, y, internalParallaxCellSize.width, internalParallaxCellSize.height)
+                    frame = CGRect(x: 0, y: y, width: internalParallaxCellSize.width, height: internalParallaxCellSize.height)
                     y += frame.size.height + self.gridPadding
                     break
                 case 4:
-                    frame = CGRectMake(x, y, internalGridCellSize.width, internalGridCellSize.height)
+                    frame = CGRect(x: x, y: y, width: internalGridCellSize.width, height: internalGridCellSize.height)
                     break
                 case 5:
-                    frame = CGRectMake(x + internalGridCellSize.width + self.gridCellSpacing.width, y, internalGridCellSize.width, internalGridCellSize.height)
+                    frame = CGRect(x: x + internalGridCellSize.width + self.gridCellSpacing.width, y: y, width: internalGridCellSize.width, height: internalGridCellSize.height)
                     y += frame.size.height + self.gridCellSpacing.height
                     break
                 case 6:
-                    frame = CGRectMake(x, y, internalGridCellSize.width * 2 + self.gridCellSpacing.width, internalGridCellSize.height * 2 + self.gridCellSpacing.height)
+                    frame = CGRect(x: x, y: y, width: internalGridCellSize.width * 2 + self.gridCellSpacing.width, height: internalGridCellSize.height * 2 + self.gridCellSpacing.height)
                     y += frame.size.height + self.gridCellSpacing.height
                     break
                 case 7:
-                    frame = CGRectMake(x, y, internalGridCellSize.width, internalGridCellSize.height)
+                    frame = CGRect(x: x, y: y, width: internalGridCellSize.width, height: internalGridCellSize.height)
                     break
                 case 8:
-                    frame = CGRectMake(x + internalGridCellSize.width + self.gridCellSpacing.width, y, internalGridCellSize.width, internalGridCellSize.height)
+                    frame = CGRect(x: x + internalGridCellSize.width + self.gridCellSpacing.width, y: y, width: internalGridCellSize.width, height: internalGridCellSize.height)
                     y += frame.size.height + self.gridPadding
                     break
                 case 9:
-                    frame = CGRectMake(0, y, internalParallaxCellSize.width, internalParallaxCellSize.height)
+                    frame = CGRect(x: 0, y: y, width: internalParallaxCellSize.width, height: internalParallaxCellSize.height)
                     y += frame.size.height + self.gridPadding
                     break
                 default:
@@ -304,38 +304,38 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
             } else {
                 switch (indexInGroup) {
                 case 0:
-                    frame = CGRectMake(x, y, internalGridCellSize.width, internalGridCellSize.height)
+                    frame = CGRect(x: x, y: y, width: internalGridCellSize.width, height: internalGridCellSize.height)
                     break
                 case 1:
-                    frame = CGRectMake(x + internalGridCellSize.width + self.gridCellSpacing.width, y, internalGridCellSize.width, internalGridCellSize.height * 2 + self.gridCellSpacing.height)
+                    frame = CGRect(x: x + internalGridCellSize.width + self.gridCellSpacing.width, y: y, width: internalGridCellSize.width, height: internalGridCellSize.height * 2 + self.gridCellSpacing.height)
                     break
                 case 2:
-                    frame = CGRectMake(x, y + internalGridCellSize.height + self.gridCellSpacing.height, internalGridCellSize.width, internalGridCellSize.height)
+                    frame = CGRect(x: x, y: y + internalGridCellSize.height + self.gridCellSpacing.height, width: internalGridCellSize.width, height: internalGridCellSize.height)
                     x += internalGridCellSize.width * 2 + self.gridCellSpacing.width + self.gridPadding
                     break
                 case 3:
-                    frame = CGRectMake(x, 0, internalParallaxCellSize.width, internalParallaxCellSize.height)
+                    frame = CGRect(x: x, y: 0, width: internalParallaxCellSize.width, height: internalParallaxCellSize.height)
                     x += frame.size.width + self.gridPadding
                     break
                 case 4:
-                    frame = CGRectMake(x, y, internalGridCellSize.width, internalGridCellSize.height)
+                    frame = CGRect(x: x, y: y, width: internalGridCellSize.width, height: internalGridCellSize.height)
                     break
                 case 5:
-                    frame = CGRectMake(x + internalGridCellSize.width + self.gridCellSpacing.width, y, internalGridCellSize.width * 2 + self.gridCellSpacing.width, internalGridCellSize.height * 2 + self.gridCellSpacing.height)
+                    frame = CGRect(x: x + internalGridCellSize.width + self.gridCellSpacing.width, y: y, width: internalGridCellSize.width * 2 + self.gridCellSpacing.width, height: internalGridCellSize.height * 2 + self.gridCellSpacing.height)
                     break
                 case 6:
-                    frame = CGRectMake(x, y + internalGridCellSize.height + self.gridCellSpacing.height, internalGridCellSize.width, internalGridCellSize.height)
+                    frame = CGRect(x: x, y: y + internalGridCellSize.height + self.gridCellSpacing.height, width: internalGridCellSize.width, height: internalGridCellSize.height)
                     x += internalGridCellSize.width * 3 + self.gridCellSpacing.width * 3
                     break
                 case 7:
-                    frame = CGRectMake(x, y, internalGridCellSize.width, internalGridCellSize.height)
+                    frame = CGRect(x: x, y: y, width: internalGridCellSize.width, height: internalGridCellSize.height)
                     break
                 case 8:
-                    frame = CGRectMake(x, y + internalGridCellSize.height + self.gridCellSpacing.height, internalGridCellSize.width, internalGridCellSize.height)
+                    frame = CGRect(x: x, y: y + internalGridCellSize.height + self.gridCellSpacing.height, width: internalGridCellSize.width, height: internalGridCellSize.height)
                     x += frame.size.width + self.gridPadding
                     break
                 case 9:
-                    frame = CGRectMake(x, 0, internalParallaxCellSize.width, internalParallaxCellSize.height)
+                    frame = CGRect(x: x, y: 0, width: internalParallaxCellSize.width, height: internalParallaxCellSize.height)
                     x += frame.size.width + self.gridPadding
                     break
                 default:
@@ -346,7 +346,7 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
         }
     }
     
-    private func calculateHeaderAttributes() {
+    fileprivate func calculateHeaderAttributes() {
         if self.collectionView == nil {
             return
         }
@@ -355,15 +355,15 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
             return;
         }
     
-        headerAttributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: ASCollectionViewElement.Header, withIndexPath: NSIndexPath(forRow: 0, inSection: SECTION))
+        headerAttributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: ASCollectionViewElement.Header, with: IndexPath(row: 0, section: SECTION))
         if (UIInterfaceOrientationIsPortrait(currentOrientation)) {
-            headerAttributes.frame = CGRectMake(0, 0, self.collectionView!.frame.size.width, self.headerSize.height);
+            headerAttributes.frame = CGRect(x: 0, y: 0, width: self.collectionView!.frame.size.width, height: self.headerSize.height);
         } else {
-            headerAttributes.frame = CGRectMake(0, 0, self.headerSize.width, self.collectionView!.frame.size.height);
+            headerAttributes.frame = CGRect(x: 0, y: 0, width: self.headerSize.width, height: self.collectionView!.frame.size.height);
         }
     }
     
-    private func calculateMoreLoaderAttributes() {
+    fileprivate func calculateMoreLoaderAttributes() {
         if self.collectionView == nil {
             return
         }
@@ -373,24 +373,24 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
             return;
         }
         
-        let numberOfItems = self.collectionView!.numberOfItemsInSection(SECTION)
-        moreLoaderAttributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: ASCollectionViewElement.MoreLoader, withIndexPath: NSIndexPath(forRow: numberOfItems - 1, inSection: SECTION))
+        let numberOfItems = self.collectionView!.numberOfItems(inSection: SECTION)
+        moreLoaderAttributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: ASCollectionViewElement.MoreLoader, with: IndexPath(row: numberOfItems - 1, section: SECTION))
         if (UIInterfaceOrientationIsPortrait(currentOrientation)) {
-            moreLoaderAttributes.frame = CGRectMake(0, contentSize.height - moreLoaderSize.height, self.collectionView!.frame.size.width, moreLoaderSize.height);
+            moreLoaderAttributes.frame = CGRect(x: 0, y: contentSize.height - moreLoaderSize.height, width: self.collectionView!.frame.size.width, height: moreLoaderSize.height);
         } else {
-            moreLoaderAttributes.frame = CGRectMake(contentSize.width - moreLoaderSize.width, 0, moreLoaderSize.width, self.collectionView!.frame.size.height);
+            moreLoaderAttributes.frame = CGRect(x: contentSize.width - moreLoaderSize.width, y: 0, width: moreLoaderSize.width, height: self.collectionView!.frame.size.height);
         }
     }
     
     // MARK: Set Defaults Values
     
-    private func setDefaultValues() {
-        self.previousBoundsSize = CGSizeZero;
-        self.gridCellSize = CGSizeMake(200, 100)
-        self.parallaxCellSize = CGSizeMake(400, 200)
-        self.gridCellSpacing = CGSizeMake(10, 10)
-        self.headerSize = CGSizeMake(200, 200)
-        self.moreLoaderSize = CGSizeMake(50, 50)
+    fileprivate func setDefaultValues() {
+        self.previousBoundsSize = CGSize.zero;
+        self.gridCellSize = CGSize(width: 200, height: 100)
+        self.parallaxCellSize = CGSize(width: 400, height: 200)
+        self.gridCellSpacing = CGSize(width: 10, height: 10)
+        self.headerSize = CGSize(width: 200, height: 200)
+        self.moreLoaderSize = CGSize(width: 50, height: 50)
         self.gridPadding = 20.0
         self.maxParallaxOffset = 50.0
     }
