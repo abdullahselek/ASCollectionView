@@ -42,7 +42,7 @@ class ASCollectionViewTests: QuickSpec {
             context("Total section number") {
                 it("Should return one") {
                     let collectionView = self.createCollectionview()
-                    expect(collectionView.numberOfSectionsInCollectionView(collectionView)).to(equal(1))
+                    expect(collectionView.numberOfSections(in: collectionView)).to(equal(1))
                 }
             }
         }
@@ -50,14 +50,14 @@ class ASCollectionViewTests: QuickSpec {
             context("When datasource is empty") {
                 it("Should return zero") {
                     let collectionView = self.createCollectionview()
-                    expect(collectionView.numberOfItemsInSection(0)).to(equal(0))
+                    expect(collectionView.numberOfItems(inSection: 0)).to(equal(0))
                 }
             }
             context("When datasource is not empty") {
                 it("Should return item number") {
                     let collectionView = self.createCollectionview()
                     collectionView.asDataSource = MockDataSource()
-                    expect(collectionView.numberOfItemsInSection(0)).to(equal(10))
+                    expect(collectionView.numberOfItems(inSection: 0)).to(equal(10))
                 }
             }
         }
@@ -66,9 +66,8 @@ class ASCollectionViewTests: QuickSpec {
                 it("Should return a valid cell") {
                     let collectionView = self.createCollectionview()
                     collectionView.asDataSource = MockDataSource()
-                    expect(collectionView.collectionView(collectionView, cellForItemAtIndexPath:
-                        NSIndexPath(forRow: 1, inSection: 0))).to(beAKindOf(ASCollectionViewParallaxCell))
-                    
+                    expect(collectionView.collectionView(collectionView,
+                        cellForItemAt: IndexPath(row: 1, section: 0))).to(beAKindOf(ASCollectionViewParallaxCell.self))
                 }
             }
         }
@@ -86,8 +85,7 @@ class ASCollectionViewTests: QuickSpec {
                 it("Should return a valid header view") {
                     let collectionView = self.createCollectionview()
                     collectionView.asDataSource = MockDataSource()
-                    expect(collectionView.collectionView(collectionView, viewForSupplementaryElementOfKind: "Header",
-                        atIndexPath: NSIndexPath(forRow: 1, inSection: 0))).notTo(beNil())
+                    expect(collectionView.collectionView(collectionView, viewForSupplementaryElementOfKind: "Header", at: IndexPath(row: 1, section: 0))).notTo(beNil())
                 }
             }
         }
@@ -96,8 +94,8 @@ class ASCollectionViewTests: QuickSpec {
                 it("Orientation should be portrait") {
                     let collectionView = self.createCollectionview()
                     let collectionViewLayout: ASCollectionViewLayout = collectionView.collectionViewLayout as! ASCollectionViewLayout
-                    collectionView.orientationChanged(NSNotification(name: "", object: nil))
-                    expect(collectionViewLayout.currentOrientation).to(equal(UIInterfaceOrientation.Portrait))
+                    collectionView.orientationChanged(NSNotification(name: NSNotification.Name(rawValue: ""), object: nil) as Notification)
+                    expect(collectionViewLayout.currentOrientation).to(equal(UIInterfaceOrientation.portrait))
                 }
             }
         }
@@ -105,7 +103,7 @@ class ASCollectionViewTests: QuickSpec {
     
     func createCollectionview() -> ASCollectionView {
         let collectionViewLayout = ASCollectionViewLayout()
-        return ASCollectionView(frame: CGRectMake(0.0, 0.0, 320.0, 480.0),
+        return ASCollectionView(frame: CGRect(x: 0, y: 0, width: 320, height: 480),
                                               collectionViewLayout: collectionViewLayout)
     }
     
@@ -113,16 +111,16 @@ class ASCollectionViewTests: QuickSpec {
         func numberOfItemsInASCollectionView(_ asCollectionView: ASCollectionView) -> Int {
             return 10
         }
-        func collectionView(_ asCollectionView: ASCollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-            return ASCollectionViewParallaxCell(frame: CGRectMake(5.0, 5.0, 310.0, 50.0))
+        func collectionView(_ asCollectionView: ASCollectionView, cellForItemAtIndexPath indexPath: IndexPath) -> UICollectionViewCell {
+            return ASCollectionViewParallaxCell(frame: CGRect(x: 0, y: 0, width: 310, height: 50))
         }
-        func collectionView(_ asCollectionView: ASCollectionView, parallaxCellForItemAtIndexPath indexPath: NSIndexPath) -> ASCollectionViewParallaxCell {
-            return ASCollectionViewParallaxCell(frame: CGRectMake(5.0, 5.0, 310.0, 50.0))
+        func collectionView(_ asCollectionView: ASCollectionView, parallaxCellForItemAtIndexPath indexPath: IndexPath) -> ASCollectionViewParallaxCell {
+            return ASCollectionViewParallaxCell(frame: CGRect(x: 0, y: 0, width: 310, height: 50))
         }
         func moreLoaderInASCollectionView(_ asCollectionView: ASCollectionView) -> UIView {
             return UIView()
         }
-        func collectionView(_ asCollectionView: ASCollectionView, headerAtIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        func collectionView(_ asCollectionView: ASCollectionView, headerAtIndexPath indexPath: IndexPath) -> UICollectionReusableView {
             return UICollectionReusableView()
         }
     }
