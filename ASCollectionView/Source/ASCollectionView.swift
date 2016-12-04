@@ -125,7 +125,11 @@ open class ASCollectionView: UICollectionView, UICollectionViewDataSource {
     fileprivate func setUpParallax() {
         weak var weakSelf = self
         displayLink = CADisplayLink(target: weakSelf!, selector: #selector(ASCollectionView.doParallax(_:)))
-        displayLink.frameInterval = 1
+        if #available(iOS 10.0, *) {
+            displayLink.preferredFramesPerSecond = 1
+        } else {
+            displayLink.frameInterval = 1
+        }
         displayLink.add(to: RunLoop.current, forMode: RunLoopMode.commonModes)
     }
     
