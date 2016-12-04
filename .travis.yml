@@ -1,8 +1,8 @@
 language: objective-c
-osx_image: xcode7.3
+osx_image: xcode8
 xcode_project: ASCollectionView.xcworkspace
 xcode_scheme: ASCollectionViewTests
-xcode_sdk: iphonesimulator9.3
+xcode_sdk: iphonesimulator10.0
 
 branches:
  only:
@@ -12,9 +12,11 @@ before_install:
 - rm -rf /Users/travis/Library/Developer/Xcode/DerivedData/ASCollectionView-*/
 - rvm use $RVM_RUBY_VERSION
 
-install: bundle
+install:
+- bundle
+- bundle install --without=documentation --path ../travis_bundle_dir
 
 script:
-- xcodebuild -workspace ASCollectionView.xcworkspace -scheme ASCollectionView -destination "platform=iOS Simulator,name=iPhone 6,OS=9.3" clean test | xcpretty
+- xcodebuild -workspace ASCollectionView.xcworkspace -scheme ASCollectionView -destination "platform=iOS Simulator,name=iPhone 6s,OS=10.0" clean test | xcpretty
 
 after_success: slather
