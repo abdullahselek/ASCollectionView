@@ -1,5 +1,6 @@
 ![Build Status](https://travis-ci.org/abdullahselek/ASCollectionView.svg?branch=master)
 ![CocoaPods Compatible](https://img.shields.io/cocoapods/v/ASCollectionView.svg)
+[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Coverage Status](https://coveralls.io/repos/github/abdullahselek/ASCollectionView/badge.svg?branch=master)](https://coveralls.io/github/abdullahselek/ASCollectionView?branch=master)
 
 # ASCollectionView
@@ -42,6 +43,25 @@ To integrate ASCollectionView into your Xcode project using CocoaPods, specify i
 Then, run the following command:
 
 	$ pod install
+
+# Carthage
+
+Carthage is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
+
+You can install Carthage with Homebrew using the following command:
+
+```
+brew update
+brew install carthage
+```
+
+To integrate ASCollectionView into your Xcode project using Carthage, specify it in your Cartfile:
+
+```
+github "abdullahselek/ASCollectionView" ~> 1.0.4
+```
+
+Run carthage update to build the framework and drag the built ASCollectionView.framework into your Xcode project.
 
 # Example Usage
 
