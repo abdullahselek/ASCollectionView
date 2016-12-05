@@ -23,7 +23,7 @@ CocoaPods is a dependency manager for Cocoa projects. You can install it with th
 
 ### For Swift 3
 ```
-You can use 1.0.3
+You can use > 1.0.3
 ```
 ### For Swift 2.3
 ```
