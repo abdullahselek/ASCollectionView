@@ -37,7 +37,7 @@ To integrate ASCollectionView into your Xcode project using CocoaPods, specify i
 	use_frameworks!
 
 	target '<Your Target Name>' do
-    	pod 'ASCollectionView', '1.0.1'
+    	pod 'ASCollectionView', '1.0.4'
 	end
 
 Then, run the following command:
