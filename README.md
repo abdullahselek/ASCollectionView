@@ -31,9 +31,10 @@ You can use > 1.0.3
 ```
 Please use 1.0.2
 ```
-
+```
 iOS 9.0+ -> 1.0.5
 iOS 8.0+ -> 1.0.4
+```
 
 To integrate ASCollectionView into your Xcode project using CocoaPods, specify it in your Podfile:
 
