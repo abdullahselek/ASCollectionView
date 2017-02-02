@@ -8,40 +8,40 @@
 
 import UIKit
 
-open class ASCollectionViewParallaxCell: UICollectionViewCell {
+public class ASCollectionViewParallaxCell: UICollectionViewCell {
     
     /**
       *  Image view is used for parallax effect.
      */
-    open var parallaxImageView: UIImageView!
+    public var parallaxImageView: UIImageView!
     
     /**
       *  Image is used for parallax effect.
      */
-    open var parallaxImage: UIImage!
+    public var parallaxImage: UIImage!
     
     /**
       *  Current offset of parallax image view.
      */
-    open var parallaxImageOffset: CGPoint!
+    public var parallaxImageOffset: CGPoint!
     
     /**
       *  Maximum offset for parallax image view.
      */
-    open var maxParallaxOffset: CGFloat!
+    public var maxParallaxOffset: CGFloat!
     
     /**
       *  Current orientation, used to adjust parallax image view corresponding to orientation.
      */
-    open var currentOrienration: UIInterfaceOrientation!
+    public var currentOrienration: UIInterfaceOrientation!
     
     /**
       *  ImageView layout constraints
      */
-    fileprivate var parallaxImageViewWidthConstraint: NSLayoutConstraint!
-    fileprivate var parallaxImageViewHeightConstraint: NSLayoutConstraint!
-    fileprivate var parallaxImageViewCenterXConstraint: NSLayoutConstraint!
-    fileprivate var parallaxImageViewCenterYConstraint: NSLayoutConstraint!
+    private var parallaxImageViewWidthConstraint: NSLayoutConstraint!
+    private var parallaxImageViewHeightConstraint: NSLayoutConstraint!
+    private var parallaxImageViewCenterXConstraint: NSLayoutConstraint!
+    private var parallaxImageViewCenterYConstraint: NSLayoutConstraint!
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -53,11 +53,11 @@ open class ASCollectionViewParallaxCell: UICollectionViewCell {
         self.setUp()
     }
     
-    override open func prepareForReuse() {
+    override public func prepareForReuse() {
         parallaxImageView.image = nil
     }
     
-    fileprivate func setUp() {
+    private func setUp() {
         currentOrienration = UIInterfaceOrientation.portrait
         parallaxImageView = UIImageView();
         parallaxImageView.contentMode = UIViewContentMode.scaleAspectFill;
@@ -78,17 +78,17 @@ open class ASCollectionViewParallaxCell: UICollectionViewCell {
         self.contentView.addConstraint(parallaxImageViewCenterYConstraint)
     }
     
-    open func updateParallaxImage(_ parallaxImage: UIImage) {
+    public func updateParallaxImage(_ parallaxImage: UIImage) {
         self.parallaxImage = parallaxImage
         parallaxImageView.image = parallaxImage
     }
     
-    open func setParallaxImageOffset(_ parallaxImageOffset: CGPoint) {
+    public func setParallaxImageOffset(_ parallaxImageOffset: CGPoint) {
         parallaxImageViewCenterXConstraint.constant = parallaxImageOffset.x
         parallaxImageViewCenterYConstraint.constant = parallaxImageOffset.y
     }
     
-    open func setMaxParallaxOffset(_ maxParallaxOffset: CGFloat) {
+    public func setMaxParallaxOffset(_ maxParallaxOffset: CGFloat) {
         self.maxParallaxOffset = maxParallaxOffset
         if UIInterfaceOrientationIsPortrait(self.currentOrienration) {
             parallaxImageViewWidthConstraint.constant = 0
@@ -99,7 +99,7 @@ open class ASCollectionViewParallaxCell: UICollectionViewCell {
         }
     }
     
-    open func setCurrentOrienration(_ currentOrienration: UIInterfaceOrientation) {
+    public func setCurrentOrienration(_ currentOrienration: UIInterfaceOrientation) {
         self.currentOrienration = currentOrienration
         setMaxParallaxOffset(maxParallaxOffset)
     }
