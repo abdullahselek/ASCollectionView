@@ -74,7 +74,7 @@ public protocol ASCollectionViewDelegate: UICollectionViewDelegate {
 
 }
 
-open class ASCollectionView: UICollectionView, UICollectionViewDataSource {
+public class ASCollectionView: UICollectionView, UICollectionViewDataSource {
     
     let kMoreLoaderIdentifier = "moreLoader"
     let kContentOffset = "contentOffset"
@@ -82,20 +82,20 @@ open class ASCollectionView: UICollectionView, UICollectionViewDataSource {
     /**
       *  Indicate the collection view is waiting for loading more data.
      */
-    open var loadingMore: Bool!
+    public var loadingMore: Bool!
     
     /**
       *  Indicate if the collection view has load more ability.
      */
-    open var enableLoadMore: Bool!
+    public var enableLoadMore: Bool!
     
     /**
       * Custom data source
      */
-    open var asDataSource: ASCollectionViewDataSource?
+    public var asDataSource: ASCollectionViewDataSource?
     
-    fileprivate var displayLink: CADisplayLink!
-    fileprivate var currentOrientation: UIInterfaceOrientation!
+    private var displayLink: CADisplayLink!
+    private var currentOrientation: UIInterfaceOrientation!
     
     // MARK: LifeCycle
     
@@ -111,7 +111,7 @@ open class ASCollectionView: UICollectionView, UICollectionViewDataSource {
         self.setUpParallax()
     }
     
-    fileprivate func setUp() {
+    private func setUp() {
         dataSource = self        
         enableLoadMore = true
         loadingMore = false
@@ -122,7 +122,7 @@ open class ASCollectionView: UICollectionView, UICollectionViewDataSource {
         addObserver(self, forKeyPath: kContentOffset, options: NSKeyValueObservingOptions.new, context: nil)
     }
     
-    fileprivate func setUpParallax() {
+    private func setUpParallax() {
         weak var weakSelf = self
         displayLink = CADisplayLink(target: weakSelf!, selector: #selector(ASCollectionView.doParallax(_:)))
         if #available(iOS 10.0, *) {
@@ -135,7 +135,7 @@ open class ASCollectionView: UICollectionView, UICollectionViewDataSource {
     
     // MARK: Key-Value Observer
     
-    override open func didChangeValue(forKey key: String) {
+    override public func didChangeValue(forKey key: String) {
         if key == kContentOffset && self.contentOffset.equalTo(CGPoint.zero) {
             if ((UIInterfaceOrientationIsPortrait(currentOrientation) && contentOffset.y > (contentSize.height - frame.size.height)) ||
                 (UIInterfaceOrientationIsLandscape(currentOrientation) && contentOffset.x > (contentSize.width - self.frame.size.width))) {
@@ -146,25 +146,25 @@ open class ASCollectionView: UICollectionView, UICollectionViewDataSource {
         }
     }
     
-    open func setEnableLoadMore(_ enableLoadMore: Bool) {
+    public func setEnableLoadMore(_ enableLoadMore: Bool) {
         self.enableLoadMore = enableLoadMore
         self.collectionViewLayout.invalidateLayout()
     }
     
     // MARK: UICollectionViewDataSource
     
-    open func numberOfSections(in collectionView: UICollectionView) -> Int {
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1;
     }
     
-    open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         if asDataSource != nil {
             return asDataSource!.numberOfItemsInASCollectionView(self)
         }
         return 0
     }
     
-    open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if (indexPath as NSIndexPath).row % 10 % 3 == 0 && (indexPath as NSIndexPath).row % 10 / 3 % 2 == 1 {
             let collectionViewCell: ASCollectionViewParallaxCell
             
@@ -184,7 +184,7 @@ open class ASCollectionView: UICollectionView, UICollectionViewDataSource {
         return asDataSource!.collectionView(self, cellForItemAtIndexPath: indexPath)
     }
 
-    open func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         var reusableView : UICollectionReusableView? = nil
         if kind == ASCollectionViewElement.Header {
             if let header = asDataSource?.collectionView?(self, headerAtIndexPath: indexPath) {
@@ -253,7 +253,7 @@ open class ASCollectionView: UICollectionView, UICollectionViewDataSource {
     
     // MARK: Load More
     
-    fileprivate func loadMore() {
+    private func loadMore() {
         if self.delegate!.conforms(to: ASCollectionViewDelegate.self) {
             loadingMore = true
             (self.delegate as! ASCollectionViewDelegate).loadMoreInASCollectionView!(self)
