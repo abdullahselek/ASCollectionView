@@ -13,7 +13,7 @@ public struct ASCollectionViewElement {
     public static let MoreLoader = "MoreLoader"
 }
 
-open class ASCollectionViewLayout: UICollectionViewLayout {
+public class ASCollectionViewLayout: UICollectionViewLayout {
     
     let SECTION = 0
     let NUMBEROFITEMSINGROUP = 10
@@ -21,56 +21,56 @@ open class ASCollectionViewLayout: UICollectionViewLayout {
     /**
       *  Grid cell size. Default value is (200, 100).
      */
-    open var gridCellSize: CGSize!
+    public var gridCellSize: CGSize!
     
     /**
       *  Parallax cell size. Default value is (400, 200).
      */
-    open var parallaxCellSize: CGSize!
+    public var parallaxCellSize: CGSize!
     
     /**
       *  Header size. Default value is (200, 200).
       *
       *  Set (0, 0) for no header
      */
-    open var headerSize: CGSize!
+    public var headerSize: CGSize!
     
     /**
       *  Size for more loader section. Default value is (50, 50).
      */
-    open var moreLoaderSize: CGSize!
+    public var moreLoaderSize: CGSize!
     
     /**
       *  Space between grid cells. Default value is (10, 10).
      */
-    open var gridCellSpacing: CGSize!
+    public var gridCellSpacing: CGSize!
     
     /**
       *  Padding for grid. Default value is 20.
      */
-    open var gridPadding: CGFloat! = 20.0
+    public var gridPadding: CGFloat! = 20.0
     
     /**
       *  Maximum parallax offset. Default value is 50.
      */
-    open var maxParallaxOffset: CGFloat! = 50.0
+    public var maxParallaxOffset: CGFloat! = 50.0
     
     /**
       *  Current orientation, used to layout correctly corresponding to orientation.
      */
-    open var currentOrientation: UIInterfaceOrientation!
+    public var currentOrientation: UIInterfaceOrientation!
     
     /**
       * Internal variables
      */
-    fileprivate var contentSize: CGSize!
-    fileprivate var groupSize: CGSize!
-    fileprivate var internalGridCellSize: CGSize!
-    fileprivate var internalParallaxCellSize: CGSize!
-    fileprivate var previousBoundsSize: CGSize!
-    fileprivate var cellAttributes: NSMutableDictionary!
-    fileprivate var headerAttributes: UICollectionViewLayoutAttributes!
-    fileprivate var moreLoaderAttributes: UICollectionViewLayoutAttributes!
+    internal var contentSize: CGSize!
+    internal var groupSize: CGSize!
+    internal var internalGridCellSize: CGSize!
+    internal var internalParallaxCellSize: CGSize!
+    internal var previousBoundsSize: CGSize!
+    internal var cellAttributes: NSMutableDictionary!
+    internal var headerAttributes: UICollectionViewLayoutAttributes!
+    internal var moreLoaderAttributes: UICollectionViewLayoutAttributes!
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -82,7 +82,7 @@ open class ASCollectionViewLayout: UICollectionViewLayout {
         self.setDefaultValues()
     }
     
-    override open func prepare() {        
+    override public func prepare() {
         internalGridCellSize = self.gridCellSize
         internalParallaxCellSize = self.parallaxCellSize
         
@@ -98,11 +98,11 @@ open class ASCollectionViewLayout: UICollectionViewLayout {
         calculateMoreLoaderAttributes()
     }
     
-    override open var collectionViewContentSize : CGSize {
+    override public var collectionViewContentSize : CGSize {
         return contentSize
     }
     
-    override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    override public func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var result = [UICollectionViewLayoutAttributes]()
         let numberOfItems = self.collectionView!.numberOfItems(inSection: 0)
         
@@ -128,15 +128,15 @@ open class ASCollectionViewLayout: UICollectionViewLayout {
         return result
     }
     
-    override open func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+    override public func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return cellAttributes.object(forKey: indexPath) as? UICollectionViewLayoutAttributes
     }
     
-    override open func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+    override public func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return headerAttributes
     }
     
-    override open func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+    override public func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         if previousBoundsSize.equalTo(newBounds.size) {
             previousBoundsSize = newBounds.size
             return true
@@ -146,7 +146,7 @@ open class ASCollectionViewLayout: UICollectionViewLayout {
     
     // MARK: Calculation methods
     
-    fileprivate func calculateContentSize() {
+    internal func calculateContentSize() {
         if self.collectionView == nil {
             return
         }
@@ -215,7 +215,7 @@ open class ASCollectionViewLayout: UICollectionViewLayout {
         }
     }
     
-    fileprivate func calculateCellSize() {
+    private func calculateCellSize() {
         if self.collectionView == nil {
             return
         }
@@ -229,7 +229,7 @@ open class ASCollectionViewLayout: UICollectionViewLayout {
         }
     }
     
-    fileprivate func calculateCellAttributes() {
+    private func calculateCellAttributes() {
         if self.collectionView == nil {
             return
         }
@@ -346,7 +346,7 @@ open class ASCollectionViewLayout: UICollectionViewLayout {
         }
     }
     
-    fileprivate func calculateHeaderAttributes() {
+    private func calculateHeaderAttributes() {
         if self.collectionView == nil {
             return
         }
@@ -363,7 +363,7 @@ open class ASCollectionViewLayout: UICollectionViewLayout {
         }
     }
     
-    fileprivate func calculateMoreLoaderAttributes() {
+    private func calculateMoreLoaderAttributes() {
         if self.collectionView == nil {
             return
         }
@@ -384,7 +384,7 @@ open class ASCollectionViewLayout: UICollectionViewLayout {
     
     // MARK: Set Defaults Values
     
-    fileprivate func setDefaultValues() {
+    private func setDefaultValues() {
         self.previousBoundsSize = CGSize.zero;
         self.gridCellSize = CGSize(width: 200, height: 100)
         self.parallaxCellSize = CGSize(width: 400, height: 200)

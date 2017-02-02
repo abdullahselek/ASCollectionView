@@ -76,9 +76,16 @@ class ASCollectionViewLayoutTests: QuickSpec {
     }
     
     class MockCollectionViewLayout: ASCollectionViewLayout {
-        let cellAttributes = NSMutableDictionary(capacity: 2)
-        var headerAttributes: UICollectionViewLayoutAttributes!
+
+        override init() {
+            super.init()
+            self.cellAttributes = NSMutableDictionary(capacity: 2)
+        }
         
+        required init?(coder aDecoder: NSCoder) {
+            super.init(coder: aDecoder)
+        }
+
         override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
             var result = [UICollectionViewLayoutAttributes]()
             for itemCount in 0 ..< 2 {
