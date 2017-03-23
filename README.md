@@ -2,6 +2,7 @@
 ![CocoaPods Compatible](https://img.shields.io/cocoapods/v/ASCollectionView.svg)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Coverage Status](https://coveralls.io/repos/github/abdullahselek/ASCollectionView/badge.svg?branch=master)](https://coveralls.io/github/abdullahselek/ASCollectionView?branch=master)
+![Platform](https://img.shields.io/cocoapods/p/ASCollectionView.svg?style=flat)
 
 # ASCollectionView
 A Swift collection view inspired by Airbnb.
