@@ -95,8 +95,10 @@ class ASCollectionViewTests: QuickSpec {
                     let collectionView = self.createCollectionview()
                     let collectionViewLayout: ASCollectionViewLayout = collectionView.collectionViewLayout as! ASCollectionViewLayout
                     let orientation = collectionViewLayout.currentOrientation
+                    let value = UIInterfaceOrientation.landscapeLeft.rawValue
+                    UIDevice.current.setValue(value, forKey: "orientation")
                     collectionView.orientationChanged(NSNotification(name: NSNotification.Name(rawValue: ""), object: nil) as Notification)
-                    expect(collectionViewLayout.currentOrientation).notTo(equal(orientation))
+                    expect(collectionViewLayout.currentOrientation.isPortrait).notTo(equal(orientation?.isPortrait))
                 }
             }
         }
