@@ -11,7 +11,7 @@ env:
   - RUN_TESTS="YES"
   - POD_LINT="NO"
   matrix:
-    - DESTINATION="OS=10.3,name=iPhone SE"
+    - DESTINATION="OS=10.3.1,name=iPhone SE"
     - DESTINATION="OS=9.0,name=iPhone 6"
 
 before_install:
