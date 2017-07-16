@@ -10,7 +10,7 @@ import UIKit
 import QuartzCore
 
 @objc
-public protocol ASCollectionViewDataSource : NSObjectProtocol {
+public protocol ASCollectionViewDataSource : class {
 
 /**
   *  Return number of items in collection view.
