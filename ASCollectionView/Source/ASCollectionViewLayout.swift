@@ -2,9 +2,25 @@
 //  ASCollectionViewLayout.swift
 //  ASCollectionView
 //
-//  Created by Abdullah Selek on 27/02/16.
 //  Copyright © 2016 Abdullah Selek. All rights reserved.
 //
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
 
 import UIKit
 
@@ -111,7 +127,9 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
         
         for itemCount in 0 ..< numberOfItems {
             let indexPath = IndexPath(item: itemCount, section: SECTION)
-            let attributes = cellAttributes.object(forKey: indexPath) as! UICollectionViewLayoutAttributes
+            guard let attributes = cellAttributes.object(forKey: indexPath) as? UICollectionViewLayoutAttributes else {
+                return result
+            }
             
             if rect.intersects(attributes.frame) {
                 result.append(attributes)
@@ -352,7 +370,7 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
     }
     
     private func calculateHeaderAttributes() {
-        if self.collectionView == nil {
+        guard let collectionView = self.collectionView as? ASCollectionView else {
             return
         }
         
@@ -360,11 +378,18 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
             return;
         }
     
-        headerAttributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: ASCollectionViewElement.Header, with: IndexPath(row: 0, section: SECTION))
+        headerAttributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: ASCollectionViewElement.Header,
+                                                            with: IndexPath(row: 0, section: SECTION))
         if (UIInterfaceOrientationIsPortrait(currentOrientation)) {
-            headerAttributes.frame = CGRect(x: 0, y: 0, width: self.collectionView!.frame.size.width, height: self.headerSize.height);
+            headerAttributes.frame = CGRect(x: 0,
+                                            y: 0,
+                                            width: collectionView.frame.size.width,
+                                            height: self.headerSize.height);
         } else {
-            headerAttributes.frame = CGRect(x: 0, y: 0, width: self.headerSize.width, height: self.collectionView!.frame.size.height);
+            headerAttributes.frame = CGRect(x: 0,
+                                            y: 0,
+                                            width: self.headerSize.width,
+                                            height: collectionView.frame.size.height);
         }
     }
     
