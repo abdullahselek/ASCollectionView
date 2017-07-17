@@ -104,7 +104,10 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
     
     override public func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var result = [UICollectionViewLayoutAttributes]()
-        let numberOfItems = self.collectionView!.numberOfItems(inSection: 0)
+        guard let collectionView = self.collectionView as? ASCollectionView else {
+            return result
+        }
+        let numberOfItems = collectionView.numberOfItems(inSection: 0)
         
         for itemCount in 0 ..< numberOfItems {
             let indexPath = IndexPath(item: itemCount, section: SECTION)
