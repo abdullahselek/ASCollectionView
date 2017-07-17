@@ -364,21 +364,28 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
     }
     
     private func calculateMoreLoaderAttributes() {
-        if self.collectionView == nil {
+        guard let collectionView = self.collectionView as? ASCollectionView else {
+            return
+        }
+
+        if !collectionView.enableLoadMore {
+            moreLoaderAttributes = nil
             return
         }
         
-        if (self.collectionView as! ASCollectionView).enableLoadMore == false {
-            moreLoaderAttributes = nil;
-            return;
-        }
-        
-        let numberOfItems = self.collectionView!.numberOfItems(inSection: SECTION)
-        moreLoaderAttributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: ASCollectionViewElement.MoreLoader, with: IndexPath(row: numberOfItems - 1, section: SECTION))
+        let numberOfItems = collectionView.numberOfItems(inSection: SECTION)
+        moreLoaderAttributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: ASCollectionViewElement.MoreLoader,
+                                                                with: IndexPath(row: numberOfItems - 1, section: SECTION))
         if (UIInterfaceOrientationIsPortrait(currentOrientation)) {
-            moreLoaderAttributes.frame = CGRect(x: 0, y: contentSize.height - moreLoaderSize.height, width: self.collectionView!.frame.size.width, height: moreLoaderSize.height);
+            moreLoaderAttributes.frame = CGRect(x: 0,
+                                                y: contentSize.height - moreLoaderSize.height,
+                                                width: self.collectionView!.frame.size.width,
+                                                height: moreLoaderSize.height);
         } else {
-            moreLoaderAttributes.frame = CGRect(x: contentSize.width - moreLoaderSize.width, y: 0, width: moreLoaderSize.width, height: self.collectionView!.frame.size.height);
+            moreLoaderAttributes.frame = CGRect(x: contentSize.width - moreLoaderSize.width,
+                                                y: 0,
+                                                width: moreLoaderSize.width,
+                                                height: self.collectionView!.frame.size.height);
         }
     }
     
