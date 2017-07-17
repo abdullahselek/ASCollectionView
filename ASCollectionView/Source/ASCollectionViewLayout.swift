@@ -392,7 +392,7 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
     // MARK: Set Defaults Values
     
     private func setDefaultValues() {
-        self.previousBoundsSize = CGSize.zero;
+        self.previousBoundsSize = .zero
         self.gridCellSize = CGSize(width: 200, height: 100)
         self.parallaxCellSize = CGSize(width: 400, height: 200)
         self.gridCellSpacing = CGSize(width: 10, height: 10)
