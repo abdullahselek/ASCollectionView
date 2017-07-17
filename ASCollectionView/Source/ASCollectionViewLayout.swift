@@ -150,28 +150,28 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
     // MARK: Calculation methods
     
     internal func calculateContentSize() {
-        if self.collectionView == nil {
+        guard let collectionView = self.collectionView as? ASCollectionView else {
             return
         }
         
-        let numberOfItems = self.collectionView!.numberOfItems(inSection: SECTION)
+        let numberOfItems = collectionView.numberOfItems(inSection: SECTION)
         groupSize = CGSize()
         contentSize = CGSize()
         if UIInterfaceOrientationIsPortrait(currentOrientation) {
-            groupSize.width = self.collectionView!.bounds.size.width
+            groupSize.width = collectionView.bounds.size.width
             groupSize.height = internalGridCellSize.height * 6 + gridCellSpacing.height * 4 + internalParallaxCellSize.height * 2 + gridPadding * 4
             
-            contentSize.width = self.collectionView!.bounds.size.width
+            contentSize.width = collectionView.bounds.size.width
             contentSize.height = groupSize.height * CGFloat(numberOfItems / 10)
         } else {
             groupSize.width = internalGridCellSize.width * 6 + self.gridCellSpacing.width * 4 + internalParallaxCellSize.width * 2 + self.gridPadding * 4
-            groupSize.height = self.collectionView!.bounds.size.height
+            groupSize.height = collectionView.bounds.size.height
             contentSize.width = groupSize.width * CGFloat(numberOfItems / 10)
             contentSize.height = self.collectionView!.bounds.size.height
         }
         
         let numberOfItemsInLastGroup = numberOfItems % 10
-        let enableLoadMore = (self.collectionView as! ASCollectionView).enableLoadMore
+        let enableLoadMore = collectionView.enableLoadMore
         
         if UIInterfaceOrientationIsPortrait(self.currentOrientation) {
             if numberOfItemsInLastGroup > 0 {
