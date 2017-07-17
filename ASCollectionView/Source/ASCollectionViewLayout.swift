@@ -233,11 +233,11 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
     }
     
     private func calculateCellAttributes() {
-        if self.collectionView == nil {
+        guard let collectionView = self.collectionView as? ASCollectionView else {
             return
         }
         
-        let numberOfItems = self.collectionView!.numberOfItems(inSection: SECTION)
+        let numberOfItems = collectionView.numberOfItems(inSection: SECTION)
         
         cellAttributes = NSMutableDictionary(capacity: numberOfItems)
         for itemCount in 0 ..< numberOfItems {
@@ -259,7 +259,9 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
         for itemCount in 0 ..< numberOfItems {
             let indexInGroup = itemCount % NUMBEROFITEMSINGROUP
             let indexPath = IndexPath(item: itemCount, section: SECTION)
-            let attributes = cellAttributes.object(forKey: indexPath) as! UICollectionViewLayoutAttributes
+            guard let attributes = cellAttributes.object(forKey: indexPath) as? UICollectionViewLayoutAttributes else {
+                return
+            }
             var frame = CGRect.zero
             
             if UIInterfaceOrientationIsPortrait(self.currentOrientation) {
