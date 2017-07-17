@@ -219,16 +219,16 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
     }
     
     private func calculateCellSize() {
-        if self.collectionView == nil {
+        guard let collectionView = self.collectionView as? ASCollectionView else {
             return
         }
         
         if UIInterfaceOrientationIsPortrait(self.currentOrientation) {
-            internalGridCellSize.width = (self.collectionView!.frame.size.width - self.gridCellSpacing.width - self.gridPadding * 2) / 2
-            internalParallaxCellSize.width = self.collectionView!.frame.size.width
+            internalGridCellSize.width = (collectionView.frame.size.width - self.gridCellSpacing.width - self.gridPadding * 2) / 2
+            internalParallaxCellSize.width = collectionView.frame.size.width
         } else {
-            internalGridCellSize.height = (self.collectionView!.frame.size.height - self.gridCellSpacing.height - self.gridPadding * 2) / 2
-            internalParallaxCellSize.height = self.collectionView!.frame.size.height
+            internalGridCellSize.height = (collectionView.frame.size.height - self.gridCellSpacing.height - self.gridPadding * 2) / 2
+            internalParallaxCellSize.height = collectionView.frame.size.height
         }
     }
     
