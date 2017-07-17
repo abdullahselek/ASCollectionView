@@ -172,13 +172,14 @@ public class ASCollectionView: UICollectionView, UICollectionViewDataSource {
                 assertionFailure("CollectionView layout should be extended ASCollectionViewLauout")
             }
             
-            let collectionViewLayout: ASCollectionViewLayout = collectionView.collectionViewLayout as! ASCollectionViewLayout
-            if let cell = asDataSource?.collectionView(self, parallaxCellForItemAtIndexPath: indexPath) {
-                collectionViewCell = cell
+            if let collectionViewLayout: ASCollectionViewLayout = collectionView.collectionViewLayout as? ASCollectionViewLayout {
+                if let cell = asDataSource?.collectionView(self, parallaxCellForItemAtIndexPath: indexPath) {
+                    collectionViewCell = cell
                 
-                collectionViewCell.setMaxParallaxOffset(collectionViewLayout.maxParallaxOffset)
-                collectionViewCell.setCurrentOrienration(collectionViewLayout.currentOrientation)
-                return collectionViewCell
+                    collectionViewCell.setMaxParallaxOffset(collectionViewLayout.maxParallaxOffset)
+                    collectionViewCell.setCurrentOrienration(collectionViewLayout.currentOrientation)
+                    return collectionViewCell
+                }
             }
         }
         return asDataSource!.collectionView(self, cellForItemAtIndexPath: indexPath)
@@ -193,14 +194,14 @@ public class ASCollectionView: UICollectionView, UICollectionViewDataSource {
             }
         } else if kind == ASCollectionViewElement.MoreLoader {
             let reusableView = self.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: kMoreLoaderIdentifier, for: indexPath)
-            var moreLoaderView = reusableView.viewWithTag(1)
+            var moreLoaderView = reusableView.viewWithTag(1) as? UIActivityIndicatorView
             if moreLoaderView == nil {
                 if let view = asDataSource?.moreLoaderInASCollectionView?(self) {
-                    moreLoaderView = view
+                    moreLoaderView = view as? UIActivityIndicatorView
                 }
                 if moreLoaderView == nil {
                     moreLoaderView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
-                    (moreLoaderView as! UIActivityIndicatorView).startAnimating()
+                    moreLoaderView?.startAnimating()
                 }
                 moreLoaderView!.center = CGPoint(x: reusableView.bounds.size.width / 2, y: reusableView.bounds.size.height / 2)
                 moreLoaderView!.tag = 1
@@ -222,7 +223,9 @@ public class ASCollectionView: UICollectionView, UICollectionViewDataSource {
         let visibleCells = self.visibleCells
         for cell in visibleCells {
             if cell.isKind(of: ASCollectionViewParallaxCell.self) {
-                let parallaxCell = cell as! ASCollectionViewParallaxCell
+                guard let parallaxCell = cell as? ASCollectionViewParallaxCell else {
+                    return
+                }
                 
                 let bounds = self.bounds
                 let boundsCenter = CGPoint(x: bounds.midX, y: bounds.midY)
@@ -247,16 +250,22 @@ public class ASCollectionView: UICollectionView, UICollectionViewDataSource {
     
     func orientationChanged(_ notification: Notification) {
         currentOrientation = UIApplication.shared.statusBarOrientation
-        (self.collectionViewLayout as! ASCollectionViewLayout).currentOrientation = currentOrientation
+        guard let collectionViewLayout = self.collectionViewLayout as? ASCollectionViewLayout else {
+            return
+        }
+        collectionViewLayout.currentOrientation = currentOrientation
         self.collectionViewLayout.invalidateLayout()
     }
     
     // MARK: Load More
     
     private func loadMore() {
-        if self.delegate!.conforms(to: ASCollectionViewDelegate.self) {
+        guard let delegate = self.delegate as? ASCollectionViewDelegate else {
+            return
+        }
+        if delegate.conforms(to: ASCollectionViewDelegate.self) {
             loadingMore = true
-            (self.delegate as! ASCollectionViewDelegate).loadMoreInASCollectionView!(self)
+            delegate.loadMoreInASCollectionView?(self)
         }
     }
     
