@@ -109,8 +109,7 @@ public class ASCollectionView: UICollectionView, UICollectionViewDataSource {
       * Custom data source
      */
     public var asDataSource: ASCollectionViewDataSource?
-    
-    private var displayLink: CADisplayLink!
+
     private var currentOrientation: UIInterfaceOrientation!
     
     // MARK: LifeCycle
@@ -118,13 +117,11 @@ public class ASCollectionView: UICollectionView, UICollectionViewDataSource {
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.setUp()
-        self.setUpParallax()
     }
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
         self.setUp()
-        self.setUpParallax()
     }
     
     private func setUp() {
@@ -136,17 +133,6 @@ public class ASCollectionView: UICollectionView, UICollectionViewDataSource {
         NotificationCenter.default.addObserver(self, selector: #selector(ASCollectionView.orientationChanged(_:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         register(UICollectionReusableView.self, forSupplementaryViewOfKind: ASCollectionViewElement.MoreLoader, withReuseIdentifier: kMoreLoaderIdentifier)
         addObserver(self, forKeyPath: kContentOffset, options: NSKeyValueObservingOptions.new, context: nil)
-    }
-    
-    private func setUpParallax() {
-        weak var weakSelf = self
-        displayLink = CADisplayLink(target: weakSelf!, selector: #selector(ASCollectionView.doParallax(_:)))
-        if #available(iOS 10.0, *) {
-            displayLink.preferredFramesPerSecond = 1
-        } else {
-            displayLink.frameInterval = 1
-        }
-        displayLink.add(to: RunLoop.current, forMode: RunLoopMode.commonModes)
     }
     
     // MARK: Key-Value Observer
@@ -235,7 +221,7 @@ public class ASCollectionView: UICollectionView, UICollectionViewDataSource {
     
     // MARK: Parallax Effects
     
-    func doParallax(_ displayLink: CADisplayLink) {
+    func doParallax() {
         let visibleCells = self.visibleCells
         for cell in visibleCells {
             if cell.isKind(of: ASCollectionViewParallaxCell.self) {
@@ -259,6 +245,14 @@ public class ASCollectionView: UICollectionView, UICollectionViewDataSource {
                 }
                 parallaxCell.setParallaxImageOffset(parallaxOffset)
             }
+        }
+    }
+
+    // MARK: Overridden Setters / Getters
+
+    override public var contentOffset: CGPoint {
+        didSet {
+            doParallax()
         }
     }
     
@@ -288,7 +282,6 @@ public class ASCollectionView: UICollectionView, UICollectionViewDataSource {
     // MARK: Deinit
     
     deinit {
-        displayLink.invalidate()
         NotificationCenter.default.removeObserver(self)
         removeObserver(self, forKeyPath: kContentOffset)
     }
