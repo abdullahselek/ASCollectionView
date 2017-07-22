@@ -49,7 +49,7 @@ class ASCollectionViewLayoutTests: QuickSpec {
                     collectionViewLayout = MockCollectionViewLayout()
                 }
                 it("should return a valid attribute") {
-                    collectionViewLayout.layoutAttributesForElements(in: CGRect(x: 0, y: 0, width: 320, height: 50))
+                    _ = collectionViewLayout.layoutAttributesForElements(in: CGRect(x: 0, y: 0, width: 320, height: 50))
                     expect(collectionViewLayout.layoutAttributesForItem(at: IndexPath(row: 1, section: 0))).notTo(beNil())
                     expect(collectionViewLayout.layoutAttributesForItem(at: IndexPath(row: 1, section: 0))).notTo(equal(UICollectionViewLayoutAttributes(forCellWith: IndexPath(row: 0, section: 0))))
                 }
