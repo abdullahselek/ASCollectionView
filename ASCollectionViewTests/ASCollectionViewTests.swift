@@ -14,118 +14,145 @@ import Nimble
 class ASCollectionViewTests: QuickSpec {
     
     override func spec() {
-        describe(".init with frame and collectionViewLayout") {
-            context("Init success") {
-                it("With valid frame and collectionview layout") {
-                    let collectionView = self.createCollectionview()
-                    expect(collectionView).notTo(beNil())
-                }
+        var collectionView: ASCollectionView!
+
+        beforeEach {
+            let collectionViewLayout = ASCollectionViewLayout()
+            collectionView = ASCollectionView(frame: CGRect(x: 0, y: 0, width: 320, height: 480),
+                                              collectionViewLayout: collectionViewLayout)
+        }
+
+        context(".init(frame:collectionViewLayout:)") {
+            it("should creata a collection view") {
+                expect(collectionView).notTo(beNil())
             }
         }
-        describe(".setEnableLoadMore") {
-            context("Load more") {
-                it("With true parameter") {
-                    let collectionView = self.createCollectionview()
+
+        describe(".setEnableLoadMore(_:)") {
+            context("when set with a true value") {
+                beforeEach {
                     collectionView.setEnableLoadMore(true)
+                }
+
+                it("should return true when its called") {
                     expect(collectionView.enableLoadMore).to(equal(true))
                 }
             }
-            context("Load more") {
-                it("With false parameter") {
-                    let collectionView = self.createCollectionview()
+
+            context("when set with a false value") {
+                beforeEach {
                     collectionView.setEnableLoadMore(false)
+                }
+
+                it("should return false when its called") {
                     expect(collectionView.enableLoadMore).to(equal(false))
                 }
             }
         }
-        describe(".numberOfSectionsInCollectionView") {
-            context("Total section number") {
-                it("Should return one") {
-                    let collectionView = self.createCollectionview()
-                    expect(collectionView.numberOfSections(in: collectionView)).to(equal(1))
-                }
+
+        context(".numberOfSections(in:)") {
+            it("should return one") {
+                expect(collectionView.numberOfSections(in: collectionView)).to(equal(1))
             }
         }
-        describe(".numberOfItemsInSection") {
-            context("When datasource is empty") {
-                it("Should return zero") {
-                    let collectionView = self.createCollectionview()
+
+        describe(".collectionView(_:numberOfItemsInSection:)") {
+            context("when datasource is empty") {
+                it("should return zero") {
                     expect(collectionView.numberOfItems(inSection: 0)).to(equal(0))
                 }
             }
-            context("When datasource is not empty") {
-                it("Should return item number") {
-                    let collectionView = self.createCollectionview()
+
+            context("when datasource is not empty") {
+                beforeEach {
                     collectionView.asDataSource = MockDataSource()
+                }
+
+                it("should return item number") {
                     expect(collectionView.numberOfItems(inSection: 0)).to(equal(10))
                 }
             }
         }
-        describe(".cellForItemAtIndexPath") {
-            context("When datasource is not empty") {
-                it("Should return a valid cell") {
-                    let collectionView = self.createCollectionview()
+
+        describe(".collectionView(_:cellForItemAt:)") {
+            context("when datasource is not empty") {
+                beforeEach {
                     collectionView.asDataSource = MockDataSource()
+                }
+
+                it("should return a valid cell") {
                     expect(collectionView.collectionView(collectionView,
                         cellForItemAt: IndexPath(row: 1, section: 0))).to(beAKindOf(ASCollectionViewParallaxCell.self))
                 }
             }
         }
-        describe(".moreLoaderInASCollectionView") {
-            context("When datasource is not empty") {
-                it("Should return a valid view") {
-                    let collectionView = self.createCollectionview()
+
+        describe(".moreLoaderInASCollectionView(_:)") {
+            context("when datasource is not empty") {
+                beforeEach {
                     collectionView.asDataSource = MockDataSource()
+                }
+
+                it("should return a view") {
                     expect(collectionView.asDataSource!.moreLoaderInASCollectionView!(collectionView)).notTo(beNil())
                 }
             }
         }
-        describe(".viewForSupplementaryElementOfKind") {
-            context("When datasource is not empty") {
-                it("Should return a valid header view") {
-                    let collectionView = self.createCollectionview()
+
+        describe(".collectionView(_:viewForSupplementaryElementOfKind:at:)") {
+            context("when datasource is not empty") {
+                beforeEach {
                     collectionView.asDataSource = MockDataSource()
+                }
+
+                it("should return a header view") {
                     expect(collectionView.collectionView(collectionView, viewForSupplementaryElementOfKind: "Header", at: IndexPath(row: 1, section: 0))).notTo(beNil())
                 }
             }
         }
-        describe(".orientationChanged") {
-            context("When device orientation changed") {
-                it("Orientation should be changed") {
-                    let collectionView = self.createCollectionview()
-                    let collectionViewLayout: ASCollectionViewLayout = collectionView.collectionViewLayout as! ASCollectionViewLayout
-                    let orientation = collectionViewLayout.currentOrientation
+        
+        describe(".orientationChanged(_:)") {
+            context("when device orientation changed") {
+                var collectionViewLayout: ASCollectionViewLayout!
+                var orientation: UIInterfaceOrientation!
+
+                beforeEach {
+                    collectionViewLayout = collectionView.collectionViewLayout as! ASCollectionViewLayout
+                    orientation = collectionViewLayout.currentOrientation
                     let value = UIInterfaceOrientation.landscapeLeft.rawValue
                     UIDevice.current.setValue(value, forKey: "orientation")
                     collectionView.orientationChanged(NSNotification(name: NSNotification.Name(rawValue: ""), object: nil) as Notification)
+                }
+
+                it("orientation should be changed") {
                     expect(collectionViewLayout.currentOrientation.isPortrait).notTo(equal(orientation?.isPortrait))
                 }
             }
         }
     }
     
-    func createCollectionview() -> ASCollectionView {
-        let collectionViewLayout = ASCollectionViewLayout()
-        return ASCollectionView(frame: CGRect(x: 0, y: 0, width: 320, height: 480),
-                                              collectionViewLayout: collectionViewLayout)
+}
+
+class MockDataSource: NSObject, ASCollectionViewDataSource {
+
+    func numberOfItemsInASCollectionView(_ asCollectionView: ASCollectionView) -> Int {
+        return 10
     }
-    
-    class MockDataSource: NSObject, ASCollectionViewDataSource {
-        func numberOfItemsInASCollectionView(_ asCollectionView: ASCollectionView) -> Int {
-            return 10
-        }
-        func collectionView(_ asCollectionView: ASCollectionView, cellForItemAtIndexPath indexPath: IndexPath) -> UICollectionViewCell {
-            return ASCollectionViewParallaxCell(frame: CGRect(x: 0, y: 0, width: 310, height: 50))
-        }
-        func collectionView(_ asCollectionView: ASCollectionView, parallaxCellForItemAtIndexPath indexPath: IndexPath) -> ASCollectionViewParallaxCell {
-            return ASCollectionViewParallaxCell(frame: CGRect(x: 0, y: 0, width: 310, height: 50))
-        }
-        func moreLoaderInASCollectionView(_ asCollectionView: ASCollectionView) -> UIView {
-            return UIView()
-        }
-        func collectionView(_ asCollectionView: ASCollectionView, headerAtIndexPath indexPath: IndexPath) -> UICollectionReusableView {
-            return UICollectionReusableView()
-        }
+
+    func collectionView(_ asCollectionView: ASCollectionView, cellForItemAtIndexPath indexPath: IndexPath) -> UICollectionViewCell {
+        return ASCollectionViewParallaxCell(frame: CGRect(x: 0, y: 0, width: 310, height: 50))
     }
-    
+
+    func collectionView(_ asCollectionView: ASCollectionView, parallaxCellForItemAtIndexPath indexPath: IndexPath) -> ASCollectionViewParallaxCell {
+        return ASCollectionViewParallaxCell(frame: CGRect(x: 0, y: 0, width: 310, height: 50))
+    }
+
+    func moreLoaderInASCollectionView(_ asCollectionView: ASCollectionView) -> UIView {
+        return UIView()
+    }
+
+    func collectionView(_ asCollectionView: ASCollectionView, headerAtIndexPath indexPath: IndexPath) -> UICollectionReusableView {
+        return UICollectionReusableView()
+    }
+
 }
