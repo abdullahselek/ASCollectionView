@@ -14,10 +14,18 @@ import Nimble
 class ASCollectionViewParallaxCellTests: QuickSpec {
     
     override func spec() {
-        describe("CollectionView Parallax Cell") {
-            context("Check init") {
-                it("if success") {
-                    let parallaxCell = ASCollectionViewParallaxCell()
+        describe("ASCollectionViewParallaxCell Tests") {
+            context("init(frame:)") {
+                var parallaxCell: ASCollectionViewParallaxCell!
+
+                beforeEach {
+                    parallaxCell = ASCollectionViewParallaxCell(frame: CGRect(x: 0.0,
+                                                                              y: 0.0,
+                                                                              width: 320.0,
+                                                                              height: 40.0))
+                }
+
+                it("should return a cell") {
                     expect(parallaxCell).notTo(beNil())
                 }
             }
