@@ -258,7 +258,7 @@ public class ASCollectionView: UICollectionView, UICollectionViewDataSource {
     
     // MARK: Orientation
     
-    func orientationChanged(_ notification: Notification) {
+    @objc func orientationChanged(_ notification: Notification) {
         currentOrientation = UIApplication.shared.statusBarOrientation
         guard let collectionViewLayout = self.collectionViewLayout as? ASCollectionViewLayout else {
             return
