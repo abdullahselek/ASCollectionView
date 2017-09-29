@@ -26,9 +26,14 @@ CocoaPods is a dependency manager for Cocoa projects. You can install it with th
 $ gem install cocoapods
 ```
 
+### For Swift 4
+```
+Use 1.0.8
+```
+
 ### For Swift 3
 ```
-You can use > 1.0.3
+You can use 1.0.7
 ```
 ### For Swift 2.3
 ```
@@ -46,7 +51,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'ASCollectionView', '1.0.7'
+    pod 'ASCollectionView', '1.0.8'
 end
 ```
 Then, run the following command:
@@ -68,7 +73,7 @@ brew install carthage
 To integrate ASCollectionView into your Xcode project using Carthage, specify it in your Cartfile:
 
 ```
-github "abdullahselek/ASCollectionView" ~> 1.0.7
+github "abdullahselek/ASCollectionView" ~> 1.0.8
 ```
 
 Run carthage update to build the framework and drag the built ASCollectionView.framework into your Xcode project.
