@@ -19,29 +19,17 @@ A Swift collection view inspired by Airbnb.
 With the version 1.0.5 deployment target set as 9.0 and before this version all versions are
 available with 8.0+
 
+| ASCollectionView Version | Minimum iOS Target  | Swift Version |
+|:--------------------:|:---------------------------:|:---------------------------:|
+| 1.0.8 | 9.0 | 4.0 |
+| 1.0.7 | 9.0 | 3.x |
+| 1.0.2 | 8.0 | 2.x |
+
 ## CocoaPods
 
 CocoaPods is a dependency manager for Cocoa projects. You can install it with the following command:
 ```	
 $ gem install cocoapods
-```
-
-### For Swift 4
-```
-Use 1.0.8
-```
-
-### For Swift 3
-```
-You can use 1.0.7
-```
-### For Swift 2.3
-```
-Please use 1.0.2
-```
-```
-iOS 9.0+ -> 1.0.7
-iOS 8.0+ -> 1.0.4
 ```
 
 To integrate ASCollectionView into your Xcode project using CocoaPods, specify it in your Podfile:
