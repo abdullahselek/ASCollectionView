@@ -13,6 +13,7 @@ env:
   matrix:
     - DESTINATION="OS=11.3,name=iPhone 8"
     - DESTINATION="OS=10.3.1,name=iPhone 6"
+    - DESTINATION="OS=9.3,name=iPhone 5s"
 
 before_install:
 - rm -rf /Users/travis/Library/Developer/Xcode/DerivedData/ASCollectionView-*/
