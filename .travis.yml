@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode9.3
+osx_image: xcode9.4
 
 env:
   global:
@@ -7,11 +7,11 @@ env:
   - LANG=en_US.UTF-8
   - WORKSPACE=ASCollectionView.xcworkspace
   - SCHEME=ASCollectionView
-  - SDK=iphonesimulator11.3
+  - SDK=iphonesimulator11.4
   - RUN_TESTS="YES"
   - POD_LINT="NO"
   matrix:
-    - DESTINATION="OS=11.3,name=iPhone 8"
+    - DESTINATION="OS=11.4,name=iPhone 8"
     - DESTINATION="OS=10.3.1,name=iPhone 6"
     - DESTINATION="OS=9.3,name=iPhone 5s"
 
