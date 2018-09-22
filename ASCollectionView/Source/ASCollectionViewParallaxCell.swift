@@ -130,7 +130,7 @@ public class ASCollectionViewParallaxCell: UICollectionViewCell {
     
     public func setMaxParallaxOffset(_ maxParallaxOffset: CGFloat) {
         self.maxParallaxOffset = maxParallaxOffset
-        if UIInterfaceOrientationIsPortrait(self.currentOrienration) {
+        if self.currentOrienration.isPortrait {
             parallaxImageViewWidthConstraint.constant = 0
             parallaxImageViewHeightConstraint.constant = 2 * maxParallaxOffset
         } else {

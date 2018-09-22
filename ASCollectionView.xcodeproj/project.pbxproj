@@ -233,8 +233,6 @@
 				A453F75D1C8205EE00A799E0 /* Sources */,
 				A453F75E1C8205EE00A799E0 /* Frameworks */,
 				A453F75F1C8205EE00A799E0 /* Resources */,
-				8D234A66502D2667F1AFC5B7 /* [CP] Embed Pods Frameworks */,
-				CA37BC24B4630F5FC95A94E4 /* [CP] Copy Pods Resources */,
 				A4C3A8181DF4AB0400FC4273 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -256,7 +254,6 @@
 				A453F7721C8205EE00A799E0 /* Frameworks */,
 				A453F7731C8205EE00A799E0 /* Resources */,
 				017E474A34DA9775AF81828A /* [CP] Embed Pods Frameworks */,
-				D26D41D8CA657EF8E51D4DD0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -298,16 +295,16 @@
 				TargetAttributes = {
 					A453F7601C8205EE00A799E0 = {
 						CreatedOnToolsVersion = 7.2.1;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1000;
 					};
 					A453F7741C8205EE00A799E0 = {
 						CreatedOnToolsVersion = 7.2.1;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1000;
 						TestTargetID = A453F7601C8205EE00A799E0;
 					};
 					A4C3A80B1DF4AB0300FC4273 = {
 						CreatedOnToolsVersion = 8.1;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -381,36 +378,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ASCollectionViewTests/Pods-ASCollectionViewTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8D234A66502D2667F1AFC5B7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ASCollectionView/Pods-ASCollectionView-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CA37BC24B4630F5FC95A94E4 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ASCollectionView/Pods-ASCollectionView-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		D1184CA21AF086A2201092A0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -445,21 +412,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D26D41D8CA657EF8E51D4DD0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ASCollectionViewTests/Pods-ASCollectionViewTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -584,7 +536,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -634,7 +586,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -650,8 +602,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abdullahselek.ASCollectionView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -665,8 +616,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abdullahselek.ASCollectionView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -679,8 +629,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abdullahselek.ASCollectionViewTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ASCollectionView.app/ASCollectionView";
 			};
 			name = Debug;
@@ -694,8 +643,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abdullahselek.ASCollectionViewTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ASCollectionView.app/ASCollectionView";
 			};
 			name = Release;
@@ -720,8 +668,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -746,8 +693,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.abdullahselek.ASCollectionViewFramework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};

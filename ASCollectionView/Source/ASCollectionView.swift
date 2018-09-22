@@ -130,7 +130,7 @@ public class ASCollectionView: UICollectionView, UICollectionViewDataSource {
         loadingMore = false
         currentOrientation = UIInterfaceOrientation.portrait
         (self.collectionViewLayout as? ASCollectionViewLayout)?.currentOrientation = currentOrientation
-        NotificationCenter.default.addObserver(self, selector: #selector(ASCollectionView.orientationChanged(_:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ASCollectionView.orientationChanged(_:)), name: UIDevice.orientationDidChangeNotification, object: nil)
         register(UICollectionReusableView.self, forSupplementaryViewOfKind: ASCollectionViewElement.MoreLoader, withReuseIdentifier: kMoreLoaderIdentifier)
         addObserver(self, forKeyPath: kContentOffset, options: NSKeyValueObservingOptions.new, context: nil)
     }
@@ -139,8 +139,8 @@ public class ASCollectionView: UICollectionView, UICollectionViewDataSource {
     
     override public func didChangeValue(forKey key: String) {
         if key == kContentOffset && self.contentOffset.equalTo(CGPoint.zero) {
-            if ((UIInterfaceOrientationIsPortrait(currentOrientation) && contentOffset.y > (contentSize.height - frame.size.height)) ||
-                (UIInterfaceOrientationIsLandscape(currentOrientation) && contentOffset.x > (contentSize.width - self.frame.size.width))) {
+            if ((currentOrientation.isPortrait && contentOffset.y > (contentSize.height - frame.size.height)) ||
+                (currentOrientation.isLandscape && contentOffset.x > (contentSize.width - self.frame.size.width))) {
                     if enableLoadMore == true && !loadingMore {
                         loadMore()
                     }
@@ -202,15 +202,15 @@ public class ASCollectionView: UICollectionView, UICollectionViewDataSource {
                     moreLoaderView = view as? UIActivityIndicatorView
                 }
                 if moreLoaderView == nil {
-                    moreLoaderView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+                    moreLoaderView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
                     moreLoaderView?.startAnimating()
                 }
                 moreLoaderView!.center = CGPoint(x: reusableView.bounds.size.width / 2, y: reusableView.bounds.size.height / 2)
                 moreLoaderView!.tag = 1
                 reusableView.addSubview(moreLoaderView!)
                 moreLoaderView?.translatesAutoresizingMaskIntoConstraints = false
-                reusableView.addConstraint(NSLayoutConstraint(item: moreLoaderView!, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: reusableView, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0))
-                reusableView.addConstraint(NSLayoutConstraint(item: moreLoaderView!, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: reusableView, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0))
+                reusableView.addConstraint(NSLayoutConstraint(item: moreLoaderView!, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: reusableView, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0))
+                reusableView.addConstraint(NSLayoutConstraint(item: moreLoaderView!, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: reusableView, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0))
             }
             return reusableView
         } else {
@@ -238,7 +238,7 @@ public class ASCollectionView: UICollectionView, UICollectionViewDataSource {
                 let scaleFactor = parallaxCell.maxParallaxOffset / maxVerticalOffset
                 let parallaxOffset: CGPoint
                 
-                if UIInterfaceOrientationIsPortrait(currentOrientation) {
+                if currentOrientation.isPortrait {
                     parallaxOffset = CGPoint(x: 0, y: -offsetFromCenter.y * scaleFactor)
                 } else {
                     parallaxOffset = CGPoint(x: -offsetFromCenter.x * scaleFactor, y: 0)

@@ -175,14 +175,16 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
         let numberOfItems = collectionView.numberOfItems(inSection: SECTION)
         groupSize = CGSize()
         contentSize = CGSize()
-        if UIInterfaceOrientationIsPortrait(currentOrientation) {
+        if currentOrientation.isPortrait {
             groupSize.width = collectionView.bounds.size.width
-            groupSize.height = internalGridCellSize.height * 6 + gridCellSpacing.height * 4 + internalParallaxCellSize.height * 2 + gridPadding * 4
+            let calculatedHeight = gridCellSpacing.height * 4 + internalParallaxCellSize.height * 2 + gridPadding * 4
+            groupSize.height = internalGridCellSize.height * 6 + calculatedHeight
             
             contentSize.width = collectionView.bounds.size.width
             contentSize.height = groupSize.height * CGFloat(numberOfItems / 10)
         } else {
-            groupSize.width = internalGridCellSize.width * 6 + self.gridCellSpacing.width * 4 + internalParallaxCellSize.width * 2 + self.gridPadding * 4
+            let calculatedWidth = self.gridCellSpacing.width * 4 + internalParallaxCellSize.width * 2 + self.gridPadding * 4
+            groupSize.width = internalGridCellSize.width * 6 + calculatedWidth
             groupSize.height = collectionView.bounds.size.height
             contentSize.width = groupSize.width * CGFloat(numberOfItems / 10)
             contentSize.height = self.collectionView!.bounds.size.height
@@ -191,7 +193,7 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
         let numberOfItemsInLastGroup = numberOfItems % 10
         let enableLoadMore = collectionView.enableLoadMore
         
-        if UIInterfaceOrientationIsPortrait(self.currentOrientation) {
+        if self.currentOrientation.isPortrait {
             if numberOfItemsInLastGroup > 0 {
                 contentSize.height += internalGridCellSize.height + self.gridPadding
             }
@@ -241,7 +243,7 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
             return
         }
         
-        if UIInterfaceOrientationIsPortrait(self.currentOrientation) {
+        if self.currentOrientation.isPortrait {
             internalGridCellSize.width = (collectionView.frame.size.width - self.gridCellSpacing.width - self.gridPadding * 2) / 2
             internalParallaxCellSize.width = collectionView.frame.size.width
         } else {
@@ -268,7 +270,7 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
         var y: CGFloat = self.gridPadding
         
         // space for header
-        if UIInterfaceOrientationIsPortrait(self.currentOrientation) {
+        if self.currentOrientation.isPortrait {
             y += headerSize.height
         } else {
             x += headerSize.width
@@ -282,7 +284,7 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
             }
             var frame = CGRect.zero
             
-            if UIInterfaceOrientationIsPortrait(self.currentOrientation) {
+            if self.currentOrientation.isPortrait {
                 switch (indexInGroup) {
                 case 0:
                     frame = CGRect(x: x, y: y, width: internalGridCellSize.width, height: internalGridCellSize.height)
@@ -380,7 +382,7 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
     
         headerAttributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: ASCollectionViewElement.Header,
                                                             with: IndexPath(row: 0, section: SECTION))
-        if (UIInterfaceOrientationIsPortrait(currentOrientation)) {
+        if (currentOrientation.isPortrait) {
             headerAttributes.frame = CGRect(x: 0,
                                             y: 0,
                                             width: collectionView.frame.size.width,
@@ -406,7 +408,7 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
         let numberOfItems = collectionView.numberOfItems(inSection: SECTION)
         moreLoaderAttributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: ASCollectionViewElement.MoreLoader,
                                                                 with: IndexPath(row: numberOfItems - 1, section: SECTION))
-        if (UIInterfaceOrientationIsPortrait(currentOrientation)) {
+        if (currentOrientation.isPortrait) {
             moreLoaderAttributes.frame = CGRect(x: 0,
                                                 y: contentSize.height - moreLoaderSize.height,
                                                 width: self.collectionView!.frame.size.width,

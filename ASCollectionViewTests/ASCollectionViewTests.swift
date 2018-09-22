@@ -134,7 +134,11 @@ class ASCollectionViewTests: QuickSpec {
                     var orientation: UIInterfaceOrientation!
 
                     beforeEach {
-                        collectionViewLayout = collectionView.collectionViewLayout as! ASCollectionViewLayout
+                        guard let viewLayout = collectionView.collectionViewLayout as? ASCollectionViewLayout else {
+                            fail()
+                            return
+                        }
+                        collectionViewLayout = viewLayout
                         orientation = collectionViewLayout.currentOrientation
                         let value = UIInterfaceOrientation.landscapeLeft.rawValue
                         UIDevice.current.setValue(value, forKey: "orientation")
