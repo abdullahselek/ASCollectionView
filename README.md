@@ -21,6 +21,7 @@ available with 8.0+
 
 | ASCollectionView Version | Minimum iOS Target  | Swift Version |
 |:--------------------:|:---------------------------:|:---------------------------:|
+| 1.1.0 | 9.0 | 4.2 |
 | 1.0.9 | 9.0 | 4.1 |
 | 1.0.8 | 9.0 | 4.0 |
 | 1.0.7 | 9.0 | 3.x |
@@ -40,7 +41,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'ASCollectionView', '1.0.9'
+    pod 'ASCollectionView', '1.1.0'
 end
 ```
 Then, run the following command:
@@ -62,7 +63,7 @@ brew install carthage
 To integrate ASCollectionView into your Xcode project using Carthage, specify it in your Cartfile:
 
 ```
-github "abdullahselek/ASCollectionView" ~> 1.0.9
+github "abdullahselek/ASCollectionView" ~> 1.1.0
 ```
 
 Run carthage update to build the framework and drag the built ASCollectionView.framework into your Xcode project.
