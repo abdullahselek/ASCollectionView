@@ -83,28 +83,28 @@ public class ASCollectionViewParallaxCell: UICollectionViewCell {
     
         // Add constraints
         parallaxImageView.translatesAutoresizingMaskIntoConstraints = false;
-        parallaxImageViewWidthConstraint = NSLayoutConstraint(item: parallaxImageView,
+        parallaxImageViewWidthConstraint = NSLayoutConstraint(item: parallaxImageView as Any,
                                                               attribute: .width,
                                                               relatedBy: .equal,
                                                               toItem: self.contentView,
                                                               attribute: .width,
                                                               multiplier: 1,
                                                               constant: 0)
-        parallaxImageViewHeightConstraint = NSLayoutConstraint(item: parallaxImageView,
+        parallaxImageViewHeightConstraint = NSLayoutConstraint(item: parallaxImageView as Any,
                                                                attribute: .height,
                                                                relatedBy: .equal,
                                                                toItem: self.contentView,
                                                                attribute: .height,
                                                                multiplier: 1,
                                                                constant: 0)
-        parallaxImageViewCenterXConstraint = NSLayoutConstraint(item: parallaxImageView,
+        parallaxImageViewCenterXConstraint = NSLayoutConstraint(item: parallaxImageView as Any,
                                                                 attribute: .centerX,
                                                                 relatedBy: .equal,
                                                                 toItem: self.contentView,
                                                                 attribute: .centerX,
                                                                 multiplier: 1,
                                                                 constant: 0)
-        parallaxImageViewCenterYConstraint = NSLayoutConstraint(item: parallaxImageView,
+        parallaxImageViewCenterYConstraint = NSLayoutConstraint(item: parallaxImageView as Any,
                                                                 attribute: .centerY,
                                                                 relatedBy: .equal,
                                                                 toItem: self.contentView,
