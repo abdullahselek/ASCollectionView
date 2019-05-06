@@ -94,6 +94,7 @@
 		A4C7E5DA2280D8910006C155 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A4C7E5DB2280D8910006C155 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		A4C7E5E02280D8A10006C155 /* ASCollectionView.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ASCollectionView.podspec; sourceTree = "<group>"; };
+		A4C7E5E22280D9EC0006C155 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		BB1299B1B59881E6E14D0C05 /* Pods-ASCollectionView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ASCollectionView.release.xcconfig"; path = "Pods/Target Support Files/Pods-ASCollectionView/Pods-ASCollectionView.release.xcconfig"; sourceTree = "<group>"; };
 		DC440ED0A0B14E69AF3C95F8 /* Pods_ASCollectionViewTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ASCollectionViewTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -140,6 +141,7 @@
 		A453F7581C8205EE00A799E0 = {
 			isa = PBXGroup;
 			children = (
+				A4C7E5E22280D9EC0006C155 /* Package.swift */,
 				A4C7E5E02280D8A10006C155 /* ASCollectionView.podspec */,
 				A4C7E5D92280D8910006C155 /* Gemfile */,
 				A4C7E5D82280D8910006C155 /* LICENSE */,
