@@ -1,22 +1,23 @@
 Pod::Spec.new do |s|
 
-    s.name                = 'ASCollectionView'
-    s.version             = '1.1.0'
-    s.summary             = 'A Swift collection view inspired by Airbnb'
-    s.homepage            = 'https://github.com/abdullahselek/ASCollectionView'
-    s.license             = {
+    s.name                  = 'ASCollectionView'
+    s.version               = '1.1.1'
+    s.summary               = 'A Swift collection view inspired by Airbnb'
+    s.homepage              = 'https://github.com/abdullahselek/ASCollectionView'
+    s.license               = {
         :type => 'MIT',
         :file => 'LICENSE'
     }
-    s.author              = {
-        'Abdullah Selek' => 'abdullahselek@yahoo.com'
+    s.author                = {
+        'Abdullah Selek' => 'abdullahselek@gmail.com'
     }
-    s.source              = {
+    s.source                = {
         :git => 'https://github.com/abdullahselek/ASCollectionView.git',
         :tag => s.version.to_s
     }
-    s.ios.deployment_target = '9.0'
-    s.source_files        = 'ASCollectionView/Source/*.swift'
-    s.requires_arc        = true
+    s.ios.deployment_target = '10.0'
+    s.source_files          = 'ASCollectionView/Source/*.swift'
+    s.requires_arc          = true
+    s.swift_version         = '5.0'
 
 end
