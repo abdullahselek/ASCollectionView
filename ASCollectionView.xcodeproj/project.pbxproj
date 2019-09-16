@@ -69,6 +69,8 @@
 		208A05D1797AC4309A83C830 /* Pods-ASCollectionViewTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ASCollectionViewTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ASCollectionViewTests/Pods-ASCollectionViewTests.debug.xcconfig"; sourceTree = "<group>"; };
 		527DAE94F049834E79D61069 /* Pods-ASCollectionViewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ASCollectionViewTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ASCollectionViewTests/Pods-ASCollectionViewTests.release.xcconfig"; sourceTree = "<group>"; };
 		7A153B7653C9253B26575EAB /* Pods-ASCollectionView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ASCollectionView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ASCollectionView/Pods-ASCollectionView.debug.xcconfig"; sourceTree = "<group>"; };
+		83C3AD02232FC9EC00224318 /* .slather.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .slather.yml; sourceTree = "<group>"; };
+		83C3AD03232FC9EC00224318 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .travis.yml; sourceTree = "<group>"; };
 		9F81D671A4974CE546B66BE1 /* Pods_ASCollectionView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ASCollectionView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A450CB8F1C8302D900679DAF /* ASCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ASCollectionView.swift; path = Source/ASCollectionView.swift; sourceTree = "<group>"; };
 		A450CB931C830FE000679DAF /* ASCollectionViewParallaxCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ASCollectionViewParallaxCell.swift; path = Source/ASCollectionViewParallaxCell.swift; sourceTree = "<group>"; };
@@ -141,6 +143,8 @@
 		A453F7581C8205EE00A799E0 = {
 			isa = PBXGroup;
 			children = (
+				83C3AD02232FC9EC00224318 /* .slather.yml */,
+				83C3AD03232FC9EC00224318 /* .travis.yml */,
 				A4C7E5E22280D9EC0006C155 /* Package.swift */,
 				A4C7E5E02280D8A10006C155 /* ASCollectionView.podspec */,
 				A4C7E5D92280D8910006C155 /* Gemfile */,
@@ -560,7 +564,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -611,7 +615,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
