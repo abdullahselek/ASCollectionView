@@ -1,0 +1,21 @@
+name: "ASCollectionView CI"
+
+on: 
+  push:
+    branches: 
+      - master
+  pull_request:
+    branches: 
+      - master
+
+jobs:
+  iOS:
+    name: Test iOS 
+    runs-on: macOS-latest
+    strategy:
+      matrix:
+        destination: ["OS=13.1,name=iPhone 11 Pro"] #, "OS=12.4,name=iPhone XS", "OS=11.4,name=iPhone X", "OS=10.3.1,name=iPhone SE"]
+    steps:
+      - uses: actions/checkout@v1            
+      - name: iOS - ${{ matrix.destination }}
+        run: set -o pipefail && xcodebuild -workspace "ASCollectionView.xcworkspace" -scheme "ASCollectionView" -destination "${{ matrix.destination }}" clean test | xcpretty
