@@ -11,7 +11,7 @@ env:
   - RUN_TESTS="YES"
   - POD_LINT="NO"
   matrix:
-    - DESTINATION="OS=13.2,name=iPhone 11 Pro"
+    - DESTINATION="OS=13.2.2,name=iPhone 11 Pro"
     - DESTINATION="OS=12.1,name=iPhone X"
     - DESTINATION="OS=11.4,name=iPhone 8"
     - DESTINATION="OS=10.3.1,name=iPhone 6"
