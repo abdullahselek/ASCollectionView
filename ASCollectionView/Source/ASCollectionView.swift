@@ -157,7 +157,7 @@ func collectionView(_ asCollectionView: ASCollectionView, parallaxCellForItemAtI
         return 1;
     }
     
-    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if asDataSource != nil {
             return asDataSource!.numberOfItemsInASCollectionView(self)
         }

@@ -375,13 +375,13 @@ import UIKit
             return
         }
         
-        if (headerSize.width == 0 || headerSize.height == 0) {
+        if headerSize.width == 0 || headerSize.height == 0 {
             return;
         }
     
         headerAttributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: ASCollectionViewElement.Header,
                                                             with: IndexPath(row: 0, section: SECTION))
-        if (currentOrientation.isPortrait) {
+        if currentOrientation.isPortrait {
             headerAttributes.frame = CGRect(x: 0,
                                             y: 0,
                                             width: collectionView.frame.size.width,
@@ -407,7 +407,7 @@ import UIKit
         let numberOfItems = collectionView.numberOfItems(inSection: SECTION)
         moreLoaderAttributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: ASCollectionViewElement.MoreLoader,
                                                                 with: IndexPath(row: numberOfItems - 1, section: SECTION))
-        if (currentOrientation.isPortrait) {
+        if currentOrientation.isPortrait {
             moreLoaderAttributes.frame = CGRect(x: 0,
                                                 y: contentSize.height - moreLoaderSize.height,
                                                 width: self.collectionView!.frame.size.width,
