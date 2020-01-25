@@ -72,6 +72,7 @@
 		83C3AD02232FC9EC00224318 /* .slather.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .slather.yml; sourceTree = "<group>"; };
 		83C3AD03232FC9EC00224318 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .travis.yml; sourceTree = "<group>"; };
 		9F81D671A4974CE546B66BE1 /* Pods_ASCollectionView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ASCollectionView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A40C419A23DC7417008FC75A /* .github */ = {isa = PBXFileReference; lastKnownFileType = folder; path = .github; sourceTree = "<group>"; };
 		A450CB8F1C8302D900679DAF /* ASCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ASCollectionView.swift; path = Source/ASCollectionView.swift; sourceTree = "<group>"; };
 		A450CB931C830FE000679DAF /* ASCollectionViewParallaxCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ASCollectionViewParallaxCell.swift; path = Source/ASCollectionViewParallaxCell.swift; sourceTree = "<group>"; };
 		A453F7611C8205EE00A799E0 /* ASCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ASCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,7 +95,7 @@
 		A4C7E5D82280D8910006C155 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		A4C7E5D92280D8910006C155 /* Gemfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Gemfile; sourceTree = "<group>"; };
 		A4C7E5DA2280D8910006C155 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		A4C7E5DB2280D8910006C155 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		A4C7E5DB2280D8910006C155 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A4C7E5E02280D8A10006C155 /* ASCollectionView.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ASCollectionView.podspec; sourceTree = "<group>"; };
 		A4C7E5E22280D9EC0006C155 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		BB1299B1B59881E6E14D0C05 /* Pods-ASCollectionView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ASCollectionView.release.xcconfig"; path = "Pods/Target Support Files/Pods-ASCollectionView/Pods-ASCollectionView.release.xcconfig"; sourceTree = "<group>"; };
@@ -143,6 +144,7 @@
 		A453F7581C8205EE00A799E0 = {
 			isa = PBXGroup;
 			children = (
+				A40C419A23DC7417008FC75A /* .github */,
 				83C3AD02232FC9EC00224318 /* .slather.yml */,
 				83C3AD03232FC9EC00224318 /* .travis.yml */,
 				A4C7E5E22280D9EC0006C155 /* Package.swift */,
