@@ -25,8 +25,7 @@
 import UIKit
 import QuartzCore
 
-@objc
-public protocol ASCollectionViewDataSource : class {
+@objc public protocol ASCollectionViewDataSource : class {
 
 /**
   *  Return number of items in collection view.
@@ -78,8 +77,7 @@ func collectionView(_ asCollectionView: ASCollectionView, parallaxCellForItemAtI
     
 }
 
-@objc
-public protocol ASCollectionViewDelegate: UICollectionViewDelegate {
+@objc public protocol ASCollectionViewDelegate: UICollectionViewDelegate {
     
 /**
   *  Collection view delegates to this method once hitting most bottom.
@@ -90,7 +88,7 @@ public protocol ASCollectionViewDelegate: UICollectionViewDelegate {
 
 }
 
-public class ASCollectionView: UICollectionView, UICollectionViewDataSource {
+@objc public class ASCollectionView: UICollectionView, UICollectionViewDataSource {
     
     let kMoreLoaderIdentifier = "moreLoader"
     let kContentOffset = "contentOffset"

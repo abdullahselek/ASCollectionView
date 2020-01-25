@@ -24,7 +24,7 @@
 
 import UIKit
 
-public class ASCollectionViewParallaxCell: UICollectionViewCell {
+@objc public class ASCollectionViewParallaxCell: UICollectionViewCell {
     
     /**
       *  Image view is used for parallax effect.

@@ -24,12 +24,12 @@
 
 import UIKit
 
-public struct ASCollectionViewElement {
+@objc public class ASCollectionViewElement: NSObject {
     public static let Header = "Header"
     public static let MoreLoader = "MoreLoader"
 }
 
-public class ASCollectionViewLayout: UICollectionViewLayout {
+@objc public class ASCollectionViewLayout: UICollectionViewLayout {
     
     let SECTION = 0
     let NUMBEROFITEMSINGROUP = 10
@@ -46,7 +46,6 @@ public class ASCollectionViewLayout: UICollectionViewLayout {
     
     /**
       *  Header size. Default value is (200, 200).
-      *
       *  Set (0, 0) for no header
      */
     public var headerSize: CGSize!
