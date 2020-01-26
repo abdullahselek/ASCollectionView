@@ -88,7 +88,7 @@ func collectionView(_ asCollectionView: ASCollectionView, parallaxCellForItemAtI
 
 }
 
-@objc public class ASCollectionView: UICollectionView, UICollectionViewDataSource {
+@objcMembers public class ASCollectionView: UICollectionView, UICollectionViewDataSource {
     
     let kMoreLoaderIdentifier = "moreLoader"
     let kContentOffset = "contentOffset"

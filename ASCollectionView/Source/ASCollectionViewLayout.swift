@@ -24,12 +24,12 @@
 
 import UIKit
 
-@objc public class ASCollectionViewElement: NSObject {
+@objcMembers public class ASCollectionViewElement: NSObject {
     public static let Header = "Header"
     public static let MoreLoader = "MoreLoader"
 }
 
-@objc public class ASCollectionViewLayout: UICollectionViewLayout {
+@objcMembers public class ASCollectionViewLayout: UICollectionViewLayout {
     
     let SECTION = 0
     let NUMBEROFITEMSINGROUP = 10
