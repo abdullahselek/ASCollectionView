@@ -12,10 +12,10 @@ class ViewController: UIViewController {
 
     @IBOutlet var collectionView: ASCollectionView!
     var numberOfItems: Int = 10
-    
-    let collectionElementKindHeader = "Header";
-    let collectionElementKindMoreLoader = "MoreLoader";
-    
+
+    let collectionElementKindHeader = "Header"
+    let collectionElementKindMoreLoader = "MoreLoader"
+
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(UINib(nibName: collectionElementKindHeader, bundle: nil), forSupplementaryViewOfKind: collectionElementKindHeader, withReuseIdentifier: "header")
@@ -45,15 +45,15 @@ extension ViewController: ASCollectionViewDataSource {
 
     func collectionView(_ asCollectionView: ASCollectionView, cellForItemAtIndexPath indexPath: IndexPath) -> UICollectionViewCell {
         let gridCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! GridCell
-        gridCell.label.text = NSString(format: "Item %ld ", (indexPath as NSIndexPath).row) as String
-        gridCell.imageView.image = UIImage(named: NSString(format: "image-%ld", (indexPath as NSIndexPath).row % 10) as String)
+        gridCell.label.text = String(format: "Item %ld ", indexPath.row)
+        gridCell.imageView.image = UIImage(named: String(format: "image-%ld", indexPath.row % 10))
         return gridCell
     }
 
     func collectionView(_ asCollectionView: ASCollectionView, parallaxCellForItemAtIndexPath indexPath: IndexPath) -> ASCollectionViewParallaxCell {
         let parallaxCell = collectionView.dequeueReusableCell(withReuseIdentifier: "parallaxCell", for: indexPath) as! ParallaxCell
-        parallaxCell.label.text = NSString(format: "Item %ld ", (indexPath as NSIndexPath).row) as String
-        parallaxCell.updateParallaxImage(UIImage(named: NSString(format: "image-%ld", (indexPath as NSIndexPath).row % 10) as String)!)
+        parallaxCell.label.text = String(format: "Item %ld ", indexPath.row)
+        parallaxCell.updateParallaxImage(UIImage(named: String(format: "image-%ld", indexPath.row % 10))!)
         return parallaxCell
     }
 
@@ -64,14 +64,14 @@ extension ViewController: ASCollectionViewDataSource {
 }
 
 class GridCell: UICollectionViewCell {
-    
+
     @IBOutlet var label: UILabel!
     @IBOutlet var imageView: UIImageView!
-    
+
 }
 
 class ParallaxCell: ASCollectionViewParallaxCell {
-    
+
     @IBOutlet var label: UILabel!
-    
+
 }
