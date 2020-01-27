@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
     s.name                  = 'ASCollectionView'
     s.version               = '1.2.0'
-    s.summary               = 'A Swift collection view inspired by Airbnb'
+    s.summary               = 'Lightweight custom collection view inspired by Airbnb.'
     s.homepage              = 'https://github.com/abdullahselek/ASCollectionView'
     s.license               = {
         :type => 'MIT',

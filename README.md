@@ -6,7 +6,7 @@
 ![License](https://img.shields.io/dub/l/vibe-d.svg)
 
 # ASCollectionView
-A Swift collection view inspired by Airbnb.
+Lightweight custom collection view inspired by Airbnb.
 
 ## Screenshots
 
