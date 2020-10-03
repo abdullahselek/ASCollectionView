@@ -176,13 +176,17 @@ import UIKit
         contentSize = CGSize()
         if currentOrientation.isPortrait {
             groupSize.width = collectionView.bounds.size.width
-            let calculatedHeight = gridCellSpacing.height * 4 + internalParallaxCellSize.height * 2 + gridPadding * 4
+            var calculatedHeight = gridCellSpacing.height * 4
+            calculatedHeight = calculatedHeight + internalParallaxCellSize.height * 2
+            calculatedHeight = calculatedHeight + gridPadding * 4
             groupSize.height = internalGridCellSize.height * 6 + calculatedHeight
             
             contentSize.width = collectionView.bounds.size.width
             contentSize.height = groupSize.height * CGFloat(numberOfItems / 10)
         } else {
-            let calculatedWidth = self.gridCellSpacing.width * 4 + internalParallaxCellSize.width * 2 + self.gridPadding * 4
+            var calculatedWidth = self.gridCellSpacing.width * 4
+            calculatedWidth = calculatedWidth + internalParallaxCellSize.width * 2
+            calculatedWidth = calculatedWidth + self.gridPadding * 4
             groupSize.width = internalGridCellSize.width * 6 + calculatedWidth
             groupSize.height = collectionView.bounds.size.height
             contentSize.width = groupSize.width * CGFloat(numberOfItems / 10)
