@@ -18,7 +18,7 @@ Lightweight custom collection view inspired by Airbnb.
 
 | ASCollectionView Version | Minimum iOS Target  | Swift Version |
 |:--------------------:|:---------------------------:|:---------------------------:|
-| 1.1.1 | 10.0 | 5 |
+| 1.3.0 | 10.0 | 5.x |
 | 1.1.0 | 9.0 | 4.2 |
 | 1.0.9 | 9.0 | 4.1 |
 | 1.0.8 | 9.0 | 4.0 |
@@ -39,7 +39,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'ASCollectionView', '1.1.1'
+    pod 'ASCollectionView', '1.3.0'
 end
 ```
 Then, run the following command:
@@ -61,7 +61,7 @@ brew install carthage
 To integrate ASCollectionView into your Xcode project using Carthage, specify it in your Cartfile:
 
 ```
-github "abdullahselek/ASCollectionView" ~> 1.1.1
+github "abdullahselek/ASCollectionView" ~> 1.3.0
 ```
 
 Run carthage update to build the framework and drag the built ASCollectionView.framework into your Xcode project.
@@ -71,7 +71,7 @@ Run carthage update to build the framework and drag the built ASCollectionView.f
 Modify your Package.swift file to include the following dependency:
 
 ```
-.package(url: "https://github.com/abdullahselek/ASCollectionView.git", from: "1.1.1")
+.package(url: "https://github.com/abdullahselek/ASCollectionView.git", from: "1.3.0")
 ```
 
 Run `swift package resolve`
