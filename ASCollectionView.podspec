@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
     s.name                  = 'ASCollectionView'
-    s.version               = '1.2.0'
+    s.version               = '1.3.0'
     s.summary               = 'Lightweight custom collection view inspired by Airbnb.'
     s.homepage              = 'https://github.com/abdullahselek/ASCollectionView'
     s.license               = {
@@ -18,6 +18,6 @@ Pod::Spec.new do |s|
     s.ios.deployment_target = '10.0'
     s.source_files          = 'ASCollectionView/Source/*.swift'
     s.requires_arc          = true
-    s.swift_version         = '5.0'
+    s.swift_versions        = ['5.0', '5.1', '5.2', '5.3']
 
 end
