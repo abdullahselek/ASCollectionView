@@ -1,3 +1,4 @@
+[![ASCollectionView CI](https://github.com/abdullahselek/ASCollectionView/workflows/ASCollectionView%20CI/badge.svg)](https://github.com/abdullahselek/ASCollectionView/actions)
 [![Build Status](https://travis-ci.org/abdullahselek/ASCollectionView.svg?branch=master)](https://travis-ci.org/abdullahselek/ASCollectionView)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/ASCollectionView.svg)](http://cocoapods.org/pods/ASCollectionView)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
