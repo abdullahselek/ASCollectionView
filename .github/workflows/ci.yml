@@ -9,14 +9,38 @@ on:
       - master
 
 jobs:
-  iOS:
-    name: Test iOS 
-    runs-on: macOS-latest
+  iOS_14_4:
+    name: Xcode 12.4 
+    runs-on: macos-10.15
     env:
       DEVELOPER_DIR: /Applications/Xcode_12.4.app/Contents/Developer
     strategy:
       matrix:
-        destination: ["OS=14.4,name=iPhone 12 Pro"] #, "OS=12.4,name=iPhone XS", "OS=11.4,name=iPhone X", "OS=10.3.1,name=iPhone SE"]
+        destination: ["OS=14.4,name=iPhone 12 Pro"]
+    steps:
+      - uses: actions/checkout@v2           
+      - name: iOS - ${{ matrix.destination }}
+        run: set -o pipefail && xcodebuild -workspace "ASCollectionView.xcworkspace" -scheme "ASCollectionView" -destination "${{ matrix.destination }}" clean test | xcpretty
+  iOS_13_7:
+    name: Xcode 11.7
+    runs-on: macos-10.15
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_11.7.app/Contents/Developer
+    strategy:
+      matrix:
+        destination: ["OS=13.7,name=iPhone 11"]
+    steps:
+      - uses: actions/checkout@v2           
+      - name: iOS - ${{ matrix.destination }}
+        run: set -o pipefail && xcodebuild -workspace "ASCollectionView.xcworkspace" -scheme "ASCollectionView" -destination "${{ matrix.destination }}" clean test | xcpretty
+  iOS_12_4:
+    name: Xcode 10.3
+    runs-on: macos-10.14
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_10.3.app/Contents/Developer
+    strategy:
+      matrix:
+        destination: ["OS=12.4,name=iPhone X"]
     steps:
       - uses: actions/checkout@v2           
       - name: iOS - ${{ matrix.destination }}
